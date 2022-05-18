@@ -9,7 +9,6 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
-    'airbnb',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -21,21 +20,4 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint', 'simple-import-sort'],
-  // rules: {
-  // 'no-unused-vars': 'off',
-  // 'react/function-component-definition': 'off',
-  // 'react/jsx-filename-extension': 'off',
-  // 'import/no-unresolved': 'off',
-  // 'import/prefer-default-export': 'off',
-
-  //   'import/extensions': [
-  //     'warn',
-  //     {
-  //       js: 'always',
-  //       ts: 'always',
-  //       jsx: 'always',
-  //       tsx: 'always',
-  //     },
-  //   ],
-  // },
 };
