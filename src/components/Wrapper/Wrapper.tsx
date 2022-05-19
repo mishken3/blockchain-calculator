@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { FC, ReactNode } from 'react';
 import styles from './Wrapper.module.css';
 
-export const Wrapper = () => {
+interface WrapperProps {
+  // children?: ReactNode;
+  children: ReactNode;
+}
+
+export const Wrapper: FC<WrapperProps> = ({ children }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.page}>
@@ -14,7 +19,7 @@ export const Wrapper = () => {
           </a>
         </div>
 
-        <div className={styles.content}>children</div>
+        <div className={styles.content}>{children}</div>
       </div>
     </div>
   );
