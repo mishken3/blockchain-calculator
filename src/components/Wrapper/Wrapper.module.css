@@ -33,8 +33,14 @@
   justify-content: center;
   align-items: center;
 
+  background: green;
   color: #000;
   text-decoration: none;
+}
+
+.tabs__item_selected {
+  background: red;
+  color: white;
 }
 
 .content {
