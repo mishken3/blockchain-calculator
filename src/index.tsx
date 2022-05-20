@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import { ConverterPage, PersonalPage } from './pages';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);

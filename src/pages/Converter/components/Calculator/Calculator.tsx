@@ -1,6 +1,7 @@
-import React from 'react';
-import styles from './Calculator.module.css';
 import cn from 'classnames';
+import React from 'react';
+
+import styles from './Calculator.module.css';
 
 export const Calculator = () => {
   const currencies = [

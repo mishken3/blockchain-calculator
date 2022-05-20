@@ -1,7 +1,8 @@
+import cn from 'classnames';
 import React, { FC, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+
 import styles from './Wrapper.module.css';
-import cn from 'classnames';
 
 interface WrapperProps {
   children: ReactNode;
