@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import React from 'react';
 
-import styles from './Calculator.module.css';
+import styles from './Calculator.module.scss';
 
 export const Calculator = () => {
   const currencies = [
