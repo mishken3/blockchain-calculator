@@ -12,9 +12,6 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        {/* <Route index path="/" element={<PersonalPage />} />
-          index - main page -> doesnt work
-        */}
         <Route path="/" element={<PersonalPage />} />
 
         <Route path="/converter" element={<ConverterPage />} />
