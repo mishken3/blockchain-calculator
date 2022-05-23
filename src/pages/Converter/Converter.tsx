@@ -13,6 +13,7 @@ export const ConverterPage: FC = () => {
     tabsData,
     handleOnChangeSelectedCurrency,
     handleOnChangeSelectedConversionCurrency,
+    handleOnReverseTabs,
 
     inputsData,
     handleOnChangeInput,
@@ -35,8 +36,10 @@ export const ConverterPage: FC = () => {
         />
       </div>
 
-      <div className={styles.arrows_wrapper}>
-        <img className={styles.arrows} src={arrows} alt="Exchange Change" />
+      <div className={styles.arrows__wrapper}>
+        <button type="button" className={styles.arrows__button} onClick={handleOnReverseTabs}>
+          <img className={styles.arrows} src={arrows} alt="Exchange Change" />
+        </button>
       </div>
 
       <div className={styles.input}>

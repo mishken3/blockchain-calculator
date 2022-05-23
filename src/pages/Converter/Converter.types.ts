@@ -14,6 +14,7 @@ export interface TabsDataHook {
   tabsData: TabsData;
   handleOnChangeSelectedCurrency: (updatedValue: CurrenciesEnum) => void;
   handleOnChangeSelectedConversionCurrency: (updatedValue: CurrenciesEnum) => void;
+  handleOnReverseTabs: () => void;
 }
 
 /** INPUTS * */

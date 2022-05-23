@@ -33,10 +33,18 @@ const useTabsData = (): TabsDataHook => {
     setTabsData(updatedState);
   };
 
+  const handleOnReverseTabs = (): void =>
+    setTabsData({
+      ...tabsData,
+      selectedCurrency: tabsData.selectedConversionCurrency,
+      selectedConversionCurrency: tabsData.selectedCurrency,
+    });
+
   return {
     tabsData,
     handleOnChangeSelectedCurrency,
     handleOnChangeSelectedConversionCurrency,
+    handleOnReverseTabs,
   };
 };
 
