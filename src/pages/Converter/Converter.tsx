@@ -1,34 +1,21 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 
 import { Wrapper } from '../../components';
-import { CurrenciesEnum } from './Calculator.types';
 // import { Calculator, CurrencyTabs } from './components/';
-import { CurrencyTabs } from './components/';
+import { CurrencyTabs, InputCurrency } from './components/';
+import { useConverter } from './Converter.hook';
 import styles from './Converter.module.scss';
+import { ConversionHookData } from './Converter.types';
 
 export const ConverterPage: FC = () => {
-  const [tabsData, setTabsData] = useState({
-    selectedCurrency: CurrenciesEnum.BTC,
-    selectedConversionCurrency: CurrenciesEnum.ETH,
-  });
+  const {
+    tabsData,
+    handleOnChangeSelectedCurrency,
+    handleOnChangeSelectedConversionCurrency,
 
-  const handleOnChangeSelectedCurrency = (updatedValue: CurrenciesEnum): void => {
-    const updatedState = {
-      ...tabsData,
-      selectedCurrency: updatedValue,
-    };
-
-    setTabsData(updatedState);
-  };
-
-  const handleOnChangeSelectedConversionCurrency = (updatedValue: CurrenciesEnum): void => {
-    const updatedState = {
-      ...tabsData,
-      selectedConversionCurrency: updatedValue,
-    };
-
-    setTabsData(updatedState);
-  };
+    inputsData,
+    handleOnChangeInput,
+  }: ConversionHookData = useConverter();
 
   return (
     <Wrapper>
@@ -40,6 +27,12 @@ export const ConverterPage: FC = () => {
         title="У меня есть"
       />
 
+      <InputCurrency
+        editable
+        value={inputsData.selectedInput}
+        onChange={handleOnChangeInput}
+        exchangeCourse={'1 === 1'}
+      />
       <br />
       <br />
 
@@ -47,6 +40,11 @@ export const ConverterPage: FC = () => {
         handleOnClick={handleOnChangeSelectedConversionCurrency}
         selectedCurrency={tabsData.selectedConversionCurrency}
         title="Хочу приобрести"
+      />
+      <InputCurrency
+        editable={false}
+        value={inputsData.selectedConversionInput}
+        exchangeCourse={'1 === 1'}
       />
 
       {/* <Calculator /> */}
