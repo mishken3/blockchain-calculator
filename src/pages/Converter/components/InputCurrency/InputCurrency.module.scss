@@ -1,7 +1,8 @@
 @use '../../../../assets/styles/constants.scss' as *;
 
 .wrapper {
-  border: 3px solid antiquewhite;
+  border: 2px solid $color__grey__50;
+  border-radius: 5px;
 
   padding: 32px 16px;
   display: flex;
@@ -19,6 +20,12 @@
   margin-bottom: 32px;
 
   color: $color__black;
+}
+
+.input,
+.input:focus {
+  border: none;
+  outline: none;
 }
 
 .input::-webkit-inner-spin-button,

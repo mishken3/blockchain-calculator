@@ -5,6 +5,11 @@
 }
 
 .page {
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+
   padding: 40px 240px;
 }
 
@@ -16,7 +21,6 @@
   letter-spacing: 0em;
   text-align: left;
 
-  padding-bottom: 24px;
   margin: 0px;
 
   color: $color__black;
