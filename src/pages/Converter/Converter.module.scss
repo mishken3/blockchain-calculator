@@ -3,3 +3,17 @@
   font-weight: 700;
   font-size: 32px;
 }
+
+.input {
+  background-color: pink; // FOR REFACT, DELETE LATER
+}
+
+.arrows_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.arrows {
+  width: 41px;
+  height: 35px;
+}

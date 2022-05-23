@@ -1,0 +1,9 @@
+.content {
+  box-sizing: border-box;
+
+  border: 1px solid green;
+
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}

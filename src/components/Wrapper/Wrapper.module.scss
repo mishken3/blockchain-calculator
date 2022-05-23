@@ -1,8 +1,23 @@
 @use '../../assets/styles/constants.scss' as *;
 
 .wrapper {
-  justify-content: center;
-  align-items: center;
-
   font-family: 'Montserrat', sans-serif;
+}
+
+.page {
+  padding: 40px 240px;
+}
+
+.page__name {
+  font-family: Montserrat;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  padding-bottom: 24px;
+  margin: 0px;
+
+  color: $color__black;
 }
