@@ -14,7 +14,7 @@ export const InputCurrency: FC<InputCurrencyProps> = ({
   value,
   editable,
   exchangeCourse,
-  onChange,
+  onChange = null,
 }) => {
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (!editable || !onChange) return;

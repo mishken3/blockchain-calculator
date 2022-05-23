@@ -2,7 +2,7 @@ import cn from 'classnames';
 import React, { FC } from 'react';
 
 // import { currencies } from '../../../../data/currencies';
-import { CurrenciesEnum } from '../../Calculator.types';
+import { CurrenciesEnum } from '../../Converter.types';
 import styles from './CurrencyTabs.module.scss';
 
 interface CurrencyTabsProps {

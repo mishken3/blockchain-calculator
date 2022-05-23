@@ -5,6 +5,7 @@ import { Wrapper } from '../../components';
 import { CurrencyTabs, InputCurrency } from './components/';
 import { useConverter } from './Converter.hook';
 import styles from './Converter.module.scss';
+import { ConversionHookData } from './Converter.types';
 
 export const ConverterPage: FC = () => {
   const {
@@ -14,7 +15,7 @@ export const ConverterPage: FC = () => {
 
     inputsData,
     handleOnChangeInput,
-  } = useConverter();
+  }: ConversionHookData = useConverter();
 
   return (
     <Wrapper>

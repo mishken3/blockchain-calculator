@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
 
-import { CurrenciesEnum } from './Calculator.types';
+import {
+  ConversionHookData,
+  CurrenciesEnum,
+  InputsData,
+  InputsDataHook,
+  TabsData,
+  TabsDataHook,
+} from './Converter.types';
 
-const useTabsData = () => {
-  const [tabsData, setTabsData] = useState({
+const useTabsData = (): TabsDataHook => {
+  const [tabsData, setTabsData] = useState<TabsData>({
     selectedCurrency: CurrenciesEnum.BTC,
     selectedConversionCurrency: CurrenciesEnum.ETH,
   });
@@ -33,13 +40,13 @@ const useTabsData = () => {
   };
 };
 
-const useInputCurrency = () => {
-  const [inputsData, setInputsData] = useState({
+const useInputCurrency = (): InputsDataHook => {
+  const [inputsData, setInputsData] = useState<InputsData>({
     selectedInput: 10_000,
     selectedConversionInput: 40_000,
   });
 
-  const handleOnChangeInput = (value: number) =>
+  const handleOnChangeInput = (value: number): void =>
     setInputsData({
       ...inputsData,
       selectedInput: value,
@@ -55,18 +62,14 @@ const useInputCurrency = () => {
   return { inputsData, handleOnChangeInput };
 };
 
-export const useConverter = () => {
-  const { tabsData, handleOnChangeSelectedCurrency, handleOnChangeSelectedConversionCurrency } =
-    useTabsData();
+export const useConverter = (): ConversionHookData => {
+  const tabsHookData = useTabsData();
 
-  const { inputsData, handleOnChangeInput } = useInputCurrency();
+  const inputsHookData = useInputCurrency();
 
   return {
-    tabsData,
-    handleOnChangeSelectedCurrency,
-    handleOnChangeSelectedConversionCurrency,
+    ...tabsHookData,
 
-    inputsData,
-    handleOnChangeInput,
+    ...inputsHookData,
   };
 };
