@@ -1,0 +1,37 @@
+@use '../../../../assets/styles/constants.scss' as *;
+
+.wrapper {
+  border: 3px solid antiquewhite;
+  height: 100%;
+
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.input {
+  font-family: Montserrat;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: 0em;
+
+  margin-bottom: 32px;
+
+  color: $color__black;
+}
+
+.input::-webkit-inner-spin-button,
+.input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.course {
+  font-size: 14px;
+  font-weight: 400;
+
+  color: $color__grey__70;
+}

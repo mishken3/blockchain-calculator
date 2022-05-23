@@ -1,34 +1,20 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 
 import { Wrapper } from '../../components';
-import { CurrenciesEnum } from './Calculator.types';
 // import { Calculator, CurrencyTabs } from './components/';
-import { CurrencyTabs } from './components/';
+import { CurrencyTabs, InputCurrency } from './components/';
+import { useConverter } from './Converter.hook';
 import styles from './Converter.module.scss';
 
 export const ConverterPage: FC = () => {
-  const [tabsData, setTabsData] = useState({
-    selectedCurrency: CurrenciesEnum.BTC,
-    selectedConversionCurrency: CurrenciesEnum.ETH,
-  });
+  const {
+    tabsData,
+    handleOnChangeSelectedCurrency,
+    handleOnChangeSelectedConversionCurrency,
 
-  const handleOnChangeSelectedCurrency = (updatedValue: CurrenciesEnum): void => {
-    const updatedState = {
-      ...tabsData,
-      selectedCurrency: updatedValue,
-    };
-
-    setTabsData(updatedState);
-  };
-
-  const handleOnChangeSelectedConversionCurrency = (updatedValue: CurrenciesEnum): void => {
-    const updatedState = {
-      ...tabsData,
-      selectedConversionCurrency: updatedValue,
-    };
-
-    setTabsData(updatedState);
-  };
+    inputsData,
+    handleOnChangeInput,
+  } = useConverter();
 
   return (
     <Wrapper>
@@ -41,6 +27,12 @@ export const ConverterPage: FC = () => {
       />
 
       <br />
+      <InputCurrency
+        editable
+        value={inputsData.selectedInput}
+        onChange={handleOnChangeInput}
+        exchangeCourse={'1 === 1'}
+      />
       <br />
 
       <CurrencyTabs
