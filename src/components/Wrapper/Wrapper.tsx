@@ -1,33 +1,20 @@
-import cn from 'classnames';
 import React, { FC, ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 
+import { Body, Header } from './components';
 import styles from './Wrapper.module.scss';
 
 interface WrapperProps {
   children: ReactNode;
+  pageName: string;
 }
 
-export const Wrapper: FC<WrapperProps> = ({ children }) => {
-  const isPersonalPage = window.location.pathname === '/';
-
+export const Wrapper: FC<WrapperProps> = ({ children, pageName }) => {
   return (
     <div className={styles.wrapper}>
+      <Header />
       <div className={styles.page}>
-        <div className={styles.tabs}>
-          <Link
-            className={cn(styles.tabs__item, !isPersonalPage && styles.tabs__item_selected)}
-            to="/converter">
-            Конвертер
-          </Link>
-          <Link
-            className={cn(styles.tabs__item, isPersonalPage && styles.tabs__item_selected)}
-            to="/">
-            Личный кабинет
-          </Link>
-        </div>
-
-        <div className={styles.content}>{children}</div>
+        <p className={styles.page__name}>{pageName}</p>
+        <Body>{children}</Body>
       </div>
     </div>
   );

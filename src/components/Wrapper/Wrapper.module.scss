@@ -1,53 +1,27 @@
 @use '../../assets/styles/constants.scss' as *;
 
 .wrapper {
-  height: 100vh;
-  width: 100vw;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border: 5px solid $color__red;
   font-family: 'Montserrat', sans-serif;
 }
 
 .page {
-  height: 95vh;
-  width: 95vh;
-  border: 1px solid;
-}
-
-.tabs {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+
+  gap: 24px;
+
+  padding: 40px 240px;
 }
 
-.tabs__item {
-  width: 50%;
-  height: 40px;
-  padding: 0;
+.page__name {
+  font-family: Montserrat;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0em;
+  text-align: left;
 
-  border: 1px solid;
+  margin: 0px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: green;
-  color: #000;
-  text-decoration: none;
-}
-
-.tabs__item_selected {
-  background: red;
-  color: white;
-}
-
-.content {
-  padding: 16px;
-
-  border: 1px solid green;
+  color: $color__black;
 }
