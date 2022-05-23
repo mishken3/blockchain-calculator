@@ -1,16 +1,18 @@
 import React, { FC, useState } from 'react';
 
 import { Wrapper } from '../../components';
-import { Calculator, CurrencyTabs } from './components/';
+import { CurrenciesEnum } from './Calculator.types';
+// import { Calculator, CurrencyTabs } from './components/';
+import { CurrencyTabs } from './components/';
 import styles from './Converter.module.scss';
 
 export const ConverterPage: FC = () => {
   const [tabsData, setTabsData] = useState({
-    selectedCurrency: 'BTC',
-    selectedConversionCurrency: 'ETH',
+    selectedCurrency: CurrenciesEnum.BTC,
+    selectedConversionCurrency: CurrenciesEnum.ETH,
   });
 
-  const handleOnChangeSelectedCurrency = (updatedValue: string): void => {
+  const handleOnChangeSelectedCurrency = (updatedValue: CurrenciesEnum): void => {
     const updatedState = {
       ...tabsData,
       selectedCurrency: updatedValue,
@@ -19,7 +21,7 @@ export const ConverterPage: FC = () => {
     setTabsData(updatedState);
   };
 
-  const handleOnChangeSelectedConversionCurrency = (updatedValue: string): void => {
+  const handleOnChangeSelectedConversionCurrency = (updatedValue: CurrenciesEnum): void => {
     const updatedState = {
       ...tabsData,
       selectedConversionCurrency: updatedValue,
