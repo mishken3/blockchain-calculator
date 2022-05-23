@@ -4,9 +4,10 @@ import styles from './InputCurrency.module.scss';
 
 interface InputCurrencyProps {
   value: number;
-  onChange: (value: number) => void;
   editable: boolean;
   exchangeCourse: string;
+
+  onChange?: (value: number) => void;
 }
 
 export const InputCurrency: FC<InputCurrencyProps> = ({
@@ -16,7 +17,7 @@ export const InputCurrency: FC<InputCurrencyProps> = ({
   onChange,
 }) => {
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    if (!editable) return;
+    if (!editable || !onChange) return;
     const updatedValue = Number(event.target.value);
 
     onChange(updatedValue);

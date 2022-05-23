@@ -26,7 +26,6 @@ export const ConverterPage: FC = () => {
         title="У меня есть"
       />
 
-      <br />
       <InputCurrency
         editable
         value={inputsData.selectedInput}
@@ -34,11 +33,17 @@ export const ConverterPage: FC = () => {
         exchangeCourse={'1 === 1'}
       />
       <br />
+      <br />
 
       <CurrencyTabs
         handleOnClick={handleOnChangeSelectedConversionCurrency}
         selectedCurrency={tabsData.selectedConversionCurrency}
         title="Хочу приобрести"
+      />
+      <InputCurrency
+        editable={false}
+        value={inputsData.selectedConversionInput}
+        exchangeCourse={'1 === 1'}
       />
 
       {/* <Calculator /> */}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { CurrenciesEnum } from './Calculator.types';
 
@@ -44,6 +44,13 @@ const useInputCurrency = () => {
       ...inputsData,
       selectedInput: value,
     });
+
+  useEffect(() => {
+    setInputsData({
+      ...inputsData,
+      selectedConversionInput: inputsData.selectedInput * 2,
+    });
+  }, [inputsData.selectedInput]);
 
   return { inputsData, handleOnChangeInput };
 };
