@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 
+import { arrows } from '../../assets/icons';
 import { Wrapper } from '../../components';
 // import { Calculator, CurrencyTabs } from './components/';
 import { CurrencyTabs, InputCurrency } from './components/';
@@ -18,34 +19,38 @@ export const ConverterPage: FC = () => {
   }: ConversionHookData = useConverter();
 
   return (
-    <Wrapper>
-      <h1 className={styles.converter__title}>Converter page</h1>
+    <Wrapper pageName="Конвертер">
+      <div className={styles.input}>
+        <CurrencyTabs
+          handleOnClick={handleOnChangeSelectedCurrency}
+          selectedCurrency={tabsData.selectedCurrency}
+          title="У меня есть"
+        />
 
-      <CurrencyTabs
-        handleOnClick={handleOnChangeSelectedCurrency}
-        selectedCurrency={tabsData.selectedCurrency}
-        title="У меня есть"
-      />
+        <InputCurrency
+          editable
+          value={inputsData.selectedInput}
+          onChange={handleOnChangeInput}
+          exchangeCourse={'1 === 1'}
+        />
+      </div>
 
-      <InputCurrency
-        editable
-        value={inputsData.selectedInput}
-        onChange={handleOnChangeInput}
-        exchangeCourse={'1 === 1'}
-      />
-      <br />
-      <br />
+      <div className={styles.arrows_wrapper}>
+        <img className={styles.arrows} src={arrows} alt="Exchange Change" />
+      </div>
 
-      <CurrencyTabs
-        handleOnClick={handleOnChangeSelectedConversionCurrency}
-        selectedCurrency={tabsData.selectedConversionCurrency}
-        title="Хочу приобрести"
-      />
-      <InputCurrency
-        editable={false}
-        value={inputsData.selectedConversionInput}
-        exchangeCourse={'1 === 1'}
-      />
+      <div className={styles.input}>
+        <CurrencyTabs
+          handleOnClick={handleOnChangeSelectedConversionCurrency}
+          selectedCurrency={tabsData.selectedConversionCurrency}
+          title="Хочу приобрести"
+        />
+        <InputCurrency
+          editable={false}
+          value={inputsData.selectedConversionInput}
+          exchangeCourse={'1 === 1'}
+        />
+      </div>
 
       {/* <Calculator /> */}
     </Wrapper>
