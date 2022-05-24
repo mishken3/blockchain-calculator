@@ -7,6 +7,9 @@
 .arrows__wrapper {
   display: flex;
   align-items: center;
+
+  position: relative;
+  top: 35px;
 }
 
 .arrows {
@@ -15,6 +18,8 @@
 }
 
 .arrows__button {
+  cursor: pointer;
+
   outline: none;
   border: none;
   background: none;
