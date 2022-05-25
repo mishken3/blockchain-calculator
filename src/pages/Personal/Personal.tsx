@@ -1,7 +1,3 @@
 import React, { FC } from 'react';
 
-import { Wrapper } from '../../components';
-
-export const PersonalPage: FC = () => (
-  <Wrapper pageName="Портфель"> Это будет личный кабинет</Wrapper>
-);
+export const PersonalPage: FC = () => <p>Это будет личный кабинет</p>;
