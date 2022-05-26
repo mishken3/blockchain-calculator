@@ -1,4 +1,5 @@
 @use '../../../../assets/styles/constants.scss' as *;
+@import '../../../../assets/styles/buttons.scss';
 
 .currencies {
   width: 100%;
@@ -17,47 +18,31 @@
   color: $color__grey__60;
 }
 
+/** CURRENCIES BTNS **/
 .currencies__wrapper {
-  display: flex;
-  flex-direction: row;
+  @extend .buttons;
 
   gap: 16px;
 }
 
 .currencies__item {
+  @extend .buttons__button;
+
   font-family: Montserrat;
   font-size: 14px;
   font-weight: 500;
   line-height: 22px;
-  letter-spacing: 0em;
   text-align: left;
 
   background: transparent;
   border: none;
 
-  position: relative;
-  color: $color__grey__60;
-  text-decoration: none;
-}
+  &:hover {
+    cursor: pointer;
+  }
 
-.currencies__item:hover {
-  cursor: pointer;
-}
-
-.currencies__item_active {
-  color: $color__black;
-}
-
-.currencies__item_active::after {
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 2px;
-  background-color: $color__brown;
-  opacity: 1;
-
-  border-radius: 4px;
+  &_active {
+    @extend .buttons__button_selected;
+    color: $color__black;
+  }
 }
