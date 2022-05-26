@@ -1,27 +1,33 @@
 @use '../../assets/styles/constants.scss' as *;
 
-.wrapper {
-  font-family: 'Montserrat', sans-serif;
-}
-
 .page {
+  font-family: 'Montserrat', sans-serif;
+
   display: flex;
   flex-direction: column;
 
   gap: 24px;
 
   padding: 40px 240px;
+
+  &__name {
+    font-family: Montserrat;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    margin: 0px;
+
+    color: $color__black;
+  }
 }
 
-.page__name {
-  font-family: Montserrat;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 40px;
-  letter-spacing: 0em;
-  text-align: left;
+.content {
+  box-sizing: border-box;
 
-  margin: 0px;
-
-  color: $color__black;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
 }

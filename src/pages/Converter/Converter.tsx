@@ -1,8 +1,6 @@
 import React, { FC } from 'react';
 
 import { arrows } from '../../assets/icons';
-import { Wrapper } from '../../components';
-// import { Calculator, CurrencyTabs } from './components/';
 import { CurrencyTabs, InputCurrency } from './components/';
 import { useConverter } from './Converter.hook';
 import styles from './Converter.module.scss';
@@ -20,7 +18,7 @@ export const ConverterPage: FC = () => {
   }: ConversionHookData = useConverter();
 
   return (
-    <Wrapper pageName="Конвертер">
+    <>
       <div className={styles.input}>
         <CurrencyTabs
           handleOnClick={handleOnChangeSelectedCurrency}
@@ -54,8 +52,6 @@ export const ConverterPage: FC = () => {
           exchangeCourse={'1 === 1'}
         />
       </div>
-
-      {/* <Calculator /> */}
-    </Wrapper>
+    </>
   );
 };

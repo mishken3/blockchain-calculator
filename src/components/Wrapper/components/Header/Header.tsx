@@ -1,12 +1,12 @@
 import cn from 'classnames';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { logo, profile_photo } from '../../../../assets/icons';
 import styles from './Header.module.scss';
 
 export const Header = () => {
-  const isPersonalPage = window.location.pathname === '/';
+  const isPersonalPage = useLocation().pathname === '/';
 
   return (
     <div className={styles.header}>

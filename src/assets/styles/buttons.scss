@@ -3,28 +3,33 @@
 .buttons {
   display: flex;
   flex-direction: row;
-}
 
-.buttons__button {
-  position: relative;
-  color: $color__grey__60;
-  text-decoration: none;
-}
+  &__button {
+    position: relative;
 
-.buttons__button_selected {
-  color: $color__white;
-}
+    color: $color__grey__60;
 
-.buttons__button_selected::after {
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 2px;
-  background-color: $color__brown;
-  opacity: 1;
+    text-decoration: none;
 
-  border-radius: 4px;
+    &_selected {
+      color: $color__white;
+
+      &::after {
+        background-color: $color__brown;
+
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        display: block;
+        content: '';
+
+        width: 100%;
+        height: 2px;
+
+        opacity: 1;
+
+        border-radius: 4px;
+      }
+    }
+  }
 }
