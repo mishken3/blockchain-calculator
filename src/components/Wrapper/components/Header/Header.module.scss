@@ -3,45 +3,20 @@
 @import '../../../../assets/styles/buttons.scss';
 
 .header {
+  font-family: 'Montserrat', sans-serif;
+  background: $color__black;
+
   padding: 12px 40px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  background: $color__black;
 }
 
 .logo {
   width: 30px;
   height: 32px;
   color: $color__brown;
-}
-
-.profile {
-  display: flex;
-  align-items: center;
-
-  gap: 8px;
-}
-
-.profile__photo {
-  width: 32px;
-  height: 32px;
-
-  border-radius: 50%;
-}
-
-.profile__name {
-  height: 22px;
-
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
-
-  color: $color__white;
 }
 
 /** TABS **/
@@ -60,5 +35,33 @@
     &_selected {
       @extend .buttons__button_selected;
     }
+  }
+}
+
+/** PROFILE **/
+
+.profile {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  &__photo {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+  }
+
+  &__name {
+    height: 22px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+
+    color: $color__white;
   }
 }

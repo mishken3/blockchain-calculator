@@ -24,9 +24,14 @@ export const InputCurrency: FC<InputCurrencyProps> = ({
   };
 
   return (
-    <div className={styles.wrapper}>
-      <input type="number" value={value} className={styles.input} onChange={handleOnChange} />
-      <span className={styles.course}>{exchangeCourse}</span>
+    <div className={styles.input}>
+      <input
+        type="number"
+        value={value}
+        className={styles.input__input}
+        onChange={handleOnChange}
+      />
+      <span className={styles.input__course}>{exchangeCourse}</span>
     </div>
   );
 };

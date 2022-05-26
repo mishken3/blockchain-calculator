@@ -4,23 +4,23 @@
   font-size: 32px;
 }
 
-.arrows__wrapper {
-  display: flex;
-  align-items: center;
-
-  position: relative;
-  top: 35px;
-}
-
 .arrows {
   width: 41px;
   height: 35px;
-}
 
-.arrows__button {
-  cursor: pointer;
+  &__wrapper {
+    display: flex;
+    align-items: center;
 
-  outline: none;
-  border: none;
-  background: none;
+    position: relative;
+    top: 35px;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    outline: none;
+    border: none;
+    background: none;
+  }
 }

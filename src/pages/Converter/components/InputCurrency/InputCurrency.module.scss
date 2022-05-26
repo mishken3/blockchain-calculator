@@ -1,6 +1,6 @@
 @use '../../../../assets/styles/constants.scss' as *;
 
-.wrapper {
+.input {
   border: 2px solid $color__grey__50;
   border-radius: 5px;
 
@@ -8,36 +8,37 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-}
 
-.input {
-  font-family: Montserrat;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 36px;
-  letter-spacing: 0em;
+  &__input {
+    font-family: Montserrat;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0em;
 
-  margin-bottom: 32px;
+    margin-bottom: 32px;
 
-  color: $color__black;
-}
+    color: $color__black;
 
-.input,
-.input:focus {
-  border: none;
-  outline: none;
-}
+    /** REMOVE DEFAULT BROWSER BEHAVIOR **/
+    &,
+    &:focus {
+      border: none;
+      outline: none;
+    }
 
-.input::-webkit-inner-spin-button,
-.input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+  }
 
-.course {
-  font-size: 14px;
-  font-weight: 400;
+  &__course {
+    font-size: 14px;
+    font-weight: 400;
 
-  color: $color__grey__70;
+    color: $color__grey__70;
+  }
 }

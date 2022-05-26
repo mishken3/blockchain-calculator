@@ -6,16 +6,16 @@
   box-sizing: border-box;
 
   margin-bottom: 22px;
-}
 
-.currencies__title {
-  font-family: 'Montserrat', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 22px;
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
 
-  color: $color__grey__60;
+    color: $color__grey__60;
+  }
 }
 
 /** CURRENCIES BTNS **/
@@ -28,11 +28,9 @@
 .currencies__item {
   @extend .buttons__button;
 
-  font-family: Montserrat;
   font-size: 14px;
   font-weight: 500;
   line-height: 22px;
-  text-align: left;
 
   background: transparent;
   border: none;

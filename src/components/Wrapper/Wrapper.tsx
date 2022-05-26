@@ -9,7 +9,7 @@ export const Wrapper: FC = () => {
   const pageName = currentPath === '/' ? 'Портфель' : 'Конвертер';
 
   return (
-    <div className={styles.wrapper}>
+    <>
       <Header />
       <div className={styles.page}>
         <p className={styles.page__name}>{pageName}</p>
@@ -17,6 +17,6 @@ export const Wrapper: FC = () => {
           <Outlet />
         </div>
       </div>
-    </div>
+    </>
   );
 };
