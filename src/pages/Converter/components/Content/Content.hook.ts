@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
 
-import { useCurrenciesData } from './Converter.request';
 import {
-  ConversionHookData,
-  CurrenciesEnum,
+  ContentDataHook,
   InputsData,
   InputsDataHook,
   TabsData,
   TabsDataHook,
-} from './Converter.types';
+} from './Content.types';
+
+export enum CurrenciesEnum {
+  BTC = 'BTC',
+  ETH = 'ETH',
+  USD = 'USD',
+}
 
 const useTabsData = (): TabsDataHook => {
   const [tabsData, setTabsData] = useState<TabsData>({
@@ -71,16 +75,12 @@ const useInputCurrency = (): InputsDataHook => {
   return { inputsData, handleOnChangeInput };
 };
 
-export const useConverter = (): ConversionHookData => {
-  const requestData = useCurrenciesData();
-
+export const useContent = (): ContentDataHook => {
   const tabsHookData = useTabsData();
   const inputsHookData = useInputCurrency();
 
   return {
     ...tabsHookData,
     ...inputsHookData,
-
-    ...requestData,
   };
 };

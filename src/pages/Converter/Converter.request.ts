@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 
 import { useRequest } from '../../hooks';
-import { CurrenciesDataHook, CurrenciesDataResponse, CurrenciesEnum } from './Converter.types';
+import { CurrenciesEnum } from './components';
+import { CurrenciesDataHook, CurrenciesDataResponse } from './Converter.types';
 
 export const useCurrenciesData = (): CurrenciesDataHook => {
   const url = 'https://api.minerstat.com/v2/coins?list=BTC,ETH';
@@ -10,7 +11,6 @@ export const useCurrenciesData = (): CurrenciesDataHook => {
 
   useEffect(() => {
     if (data) {
-      console.log('data.data :>> ', data.data);
       data.data.push({
         coin: CurrenciesEnum.USD,
         id: String(new Date().getTime()),

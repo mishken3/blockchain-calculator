@@ -1,8 +1,7 @@
 import cn from 'classnames';
 import React, { FC } from 'react';
 
-// import { currencies } from '../../../../data/currencies';
-import { CurrenciesEnum } from '../../Converter.types';
+import { CurrenciesEnum } from '../Content';
 import styles from './CurrencyTabs.module.scss';
 
 interface CurrencyTabsProps {
@@ -12,14 +11,6 @@ interface CurrencyTabsProps {
 }
 
 export const CurrencyTabs: FC<CurrencyTabsProps> = ({ title, selectedCurrency, handleOnClick }) => {
-  /* * TODO:
-  // selectedCurrency === currencies.name
-  const currenciesName = currencies.map((currency) => currency.name); // ['BTC', 'ETH', 'USD']
-   * 1. Сравнивать значения в state
-   * 2. Обновлять значение isSelected
-   * 3. На основе isSelected из массива currencies делать ререндер
-   * */
-
   const currencies = [CurrenciesEnum.BTC, CurrenciesEnum.ETH, CurrenciesEnum.USD];
   return (
     <div className={styles.currencies}>
