@@ -1,4 +1,9 @@
+import { CurrenciesData } from '../../Converter.types';
 import { CurrenciesEnum } from './Content.hook';
+
+export interface ContentProps {
+  currenciesData: CurrenciesData;
+}
 
 /** TABS * */
 export interface TabsData {
@@ -14,15 +19,23 @@ export interface TabsDataHook {
 }
 
 /** INPUTS * */
-export interface InputsData {
-  selectedInput: number;
-  selectedConversionInput: number;
+export interface InputsHookProps {
+  currenciesData: CurrenciesData;
+  tabs: TabsData;
 }
 
-export interface InputsDataHook {
+export interface InputsData {
+  selectedInput: number;
+  selectedInputExchangeCourse: string;
+
+  selectedConversionInput: number;
+  selectedConversionInputExchangeCourse: string;
+}
+
+export interface InputsHookData {
   inputsData: InputsData;
   handleOnChangeInput: (value: number) => void;
 }
 
 /** CONTENT TYPES **/
-export type ContentDataHook = TabsDataHook & InputsDataHook;
+export type ContentDataHook = (currenciesData: CurrenciesData) => TabsDataHook & InputsHookData;

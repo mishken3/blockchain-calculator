@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import { arrows } from '../../../../assets/icons';
-import { CurrencyTabs, InputCurrency } from '../index';
+import { ContentProps, CurrencyTabs, InputCurrency } from '../index';
 import { useContent } from './Content.hook';
 import styles from './Content.module.scss';
-import { ContentDataHook } from './Content.types';
 
-export const Content = () => {
+export const Content: FC<ContentProps> = ({ currenciesData }) => {
   const {
     tabsData,
     handleOnChangeSelectedCurrency,
@@ -15,7 +14,7 @@ export const Content = () => {
 
     inputsData,
     handleOnChangeInput,
-  }: ContentDataHook = useContent();
+  } = useContent(currenciesData);
 
   return (
     <>
@@ -30,7 +29,7 @@ export const Content = () => {
           editable
           value={inputsData.selectedInput}
           onChange={handleOnChangeInput}
-          exchangeCourse={'1 === 1'}
+          exchangeCourse={inputsData.selectedInputExchangeCourse}
         />
       </div>
 
@@ -49,7 +48,7 @@ export const Content = () => {
         <InputCurrency
           editable={false}
           value={inputsData.selectedConversionInput}
-          exchangeCourse={'1 === 1'}
+          exchangeCourse={inputsData.selectedConversionInputExchangeCourse}
         />
       </div>
     </>

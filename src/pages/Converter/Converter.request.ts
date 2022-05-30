@@ -14,25 +14,25 @@ export const useCurrenciesData = () => {
 
   useEffect(() => {
     if (data) {
-      data.data.push({
-        coin: CurrenciesEnum.USD,
-        id: String(new Date().getTime()),
-        name: 'Dollar',
-        price: 1,
-      });
+      const initialState = {
+        [CurrenciesEnum.USD]: {
+          id: String(new Date().getTime()),
+          name: CurrenciesEnum.USD,
+          price: 1,
+        },
+      };
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      const currencies: CurrenciesData = data.data.reduce(
+      const currencies = data.data.reduce<CurrenciesData>(
         (acc, item) => ({
           ...acc,
-          [item.coin]: {
+          [CurrenciesEnum[item.coin]]: {
             id: item.id,
             name: item.coin,
             price: item.price,
           },
         }),
-        {},
+
+        initialState as CurrenciesData,
       );
 
       setCurrenciesData(currencies);

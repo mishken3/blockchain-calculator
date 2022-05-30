@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 
+import { CurrencyData } from '../../Converter.types';
 import {
   ContentDataHook,
   InputsData,
-  InputsDataHook,
+  InputsHookProps,
   TabsData,
   TabsDataHook,
 } from './Content.types';
@@ -53,10 +54,37 @@ const useTabsData = (): TabsDataHook => {
   };
 };
 
-const useInputCurrency = (): InputsDataHook => {
+/** TODO
+ * ВЫНЕСТИ В ОТДЕЛЬНЫЙ ФАЙЛ
+ **/
+
+type GetExchangeCourseProps = (
+  to: Omit<CurrencyData, 'coin'>,
+  from: Omit<CurrencyData, 'coin'>,
+) => string;
+
+const getExchangeCourse: GetExchangeCourseProps = (to, from) => {
+  const course = to.price / from.price;
+  return `1 ${to.name} === ${course} ${from.name}`;
+};
+
+/** TODO **/
+
+const useInputCurrency = ({ tabs, currenciesData }: InputsHookProps) => {
+  const exchangeCourse = getExchangeCourse(
+    currenciesData[tabs.selectedCurrency],
+    currenciesData[tabs.selectedConversionCurrency],
+  );
+
   const [inputsData, setInputsData] = useState<InputsData>({
     selectedInput: 10_000,
+    selectedInputExchangeCourse: exchangeCourse,
+
     selectedConversionInput: 40_000,
+    selectedConversionInputExchangeCourse: getExchangeCourse(
+      currenciesData[tabs.selectedConversionCurrency],
+      currenciesData[tabs.selectedCurrency],
+    ),
   });
 
   const handleOnChangeInput = (value: number): void =>
@@ -75,9 +103,13 @@ const useInputCurrency = (): InputsDataHook => {
   return { inputsData, handleOnChangeInput };
 };
 
-export const useContent = (): ContentDataHook => {
+export const useContent: ContentDataHook = (currenciesData) => {
   const tabsHookData = useTabsData();
-  const inputsHookData = useInputCurrency();
+
+  const inputsHookData = useInputCurrency({
+    currenciesData,
+    tabs: tabsHookData.tabsData,
+  });
 
   return {
     ...tabsHookData,

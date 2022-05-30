@@ -7,10 +7,7 @@ export const ConverterPage: FC = () => {
   const { currenciesData, isLoading, isHasError } = useCurrenciesData();
 
   if (isLoading) return <h1>Загрузка</h1>;
-  if (isHasError) return <h1>Ашыбка</h1>;
+  if (isHasError || !currenciesData) return <h1>Ашыбка</h1>;
 
-  console.log('currenciesData :>> ', currenciesData);
-
-  console.count();
-  return <Content />;
+  return <Content currenciesData={currenciesData} />;
 };
