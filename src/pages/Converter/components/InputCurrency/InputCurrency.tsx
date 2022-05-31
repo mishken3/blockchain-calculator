@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 import styles from './InputCurrency.module.scss';
+import { getClearedValue, isMaxLength, isOnlyNumbers } from './InputCurrency.utils';
 
 interface InputCurrencyProps {
   value: number;
@@ -18,16 +19,24 @@ export const InputCurrency: FC<InputCurrencyProps> = ({
 }) => {
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (!editable || !onChange) return;
-    const updatedValue = Number(event.target.value);
 
-    onChange(updatedValue);
+    const clearedValue = getClearedValue(event.target.value);
+    const isCorrectNumber = isOnlyNumbers(clearedValue);
+    const allowedLength = isMaxLength(clearedValue);
+
+    if (!allowedLength) return;
+    if (!isCorrectNumber) return;
+
+    onChange(Number(clearedValue));
   };
+
+  const inputValue = value.toLocaleString();
 
   return (
     <div className={styles.input}>
       <input
-        type="number"
-        value={value}
+        type="text"
+        value={inputValue}
         className={styles.input__input}
         onChange={handleOnChange}
       />
