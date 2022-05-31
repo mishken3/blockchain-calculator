@@ -55,6 +55,7 @@ const useTabsData = (): TabsDataHook => {
 };
 
 const useInputCurrency = ({ tabs, currenciesData }: InputsHookProps) => {
+  /** Inputs Memoization **/
   const initialInputsData = useMemo(() => {
     const exchangeInputCourse = getExchangeCourse(
       currenciesData[tabs.selectedCurrency],
@@ -76,6 +77,20 @@ const useInputCurrency = ({ tabs, currenciesData }: InputsHookProps) => {
   }, []);
 
   const [inputsData, setInputsData] = useState<InputsData>(initialInputsData);
+
+  const exchangeInputCourse = useMemo(
+    () =>
+      `1 ${tabs.selectedCurrency} = ${inputsData.selectedInputExchangeCourse} ${tabs.selectedConversionCurrency}`,
+    [tabs, inputsData.selectedInputExchangeCourse],
+  );
+
+  const exchangeConversionInputCourse = useMemo(
+    () =>
+      `1 ${tabs.selectedConversionCurrency} = ${inputsData.selectedConversionInputExchangeCourse} ${tabs.selectedCurrency}`,
+    [tabs, inputsData.selectedConversionInputExchangeCourse],
+  );
+
+  /** Calculate on change **/
 
   const handleOnChangeInput = (value: number): void =>
     setInputsData({
@@ -104,7 +119,7 @@ const useInputCurrency = ({ tabs, currenciesData }: InputsHookProps) => {
     });
   }, [currenciesData, tabs]);
 
-  return { inputsData, handleOnChangeInput };
+  return { inputsData, handleOnChangeInput, exchangeInputCourse, exchangeConversionInputCourse };
 };
 
 export const useContent: ContentDataHook = (currenciesData) => {

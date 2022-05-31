@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC } from 'react';
 
 import { arrows } from '../../../../assets/icons';
 import { ContentProps, CurrencyTabs, InputCurrency } from '../index';
@@ -14,19 +14,9 @@ export const Content: FC<ContentProps> = ({ currenciesData }) => {
 
     inputsData,
     handleOnChangeInput,
+    exchangeInputCourse,
+    exchangeConversionInputCourse,
   } = useContent(currenciesData);
-
-  const exchangeInputCourse = useMemo(
-    () =>
-      `1 ${tabsData.selectedCurrency} = ${inputsData.selectedInputExchangeCourse} ${tabsData.selectedConversionCurrency}`,
-    [tabsData, inputsData.selectedInputExchangeCourse],
-  );
-
-  const exchangeConversionInputCourse = useMemo(
-    () =>
-      `1 ${tabsData.selectedConversionCurrency} = ${inputsData.selectedConversionInputExchangeCourse} ${tabsData.selectedCurrency}`,
-    [tabsData, inputsData.selectedConversionInputExchangeCourse],
-  );
 
   return (
     <>

@@ -5,7 +5,7 @@ export interface ContentProps {
   currenciesData: CurrenciesData;
 }
 
-/** TABS * */
+/** TABS **/
 export interface TabsData {
   selectedCurrency: CurrenciesEnum;
   selectedConversionCurrency: CurrenciesEnum;
@@ -18,7 +18,7 @@ export interface TabsDataHook {
   handleOnReverseTabs: () => void;
 }
 
-/** INPUTS * */
+/** INPUTS **/
 export interface InputsHookProps {
   currenciesData: CurrenciesData;
   tabs: TabsData;
@@ -37,5 +37,12 @@ export interface InputsHookData {
   handleOnChangeInput: (value: number) => void;
 }
 
+export interface InpuntMemo {
+  exchangeInputCourse: string;
+  exchangeConversionInputCourse: string;
+}
+
 /** CONTENT TYPES **/
-export type ContentDataHook = (currenciesData: CurrenciesData) => TabsDataHook & InputsHookData;
+export type ContentDataHook = (
+  currenciesData: CurrenciesData,
+) => TabsDataHook & InputsHookData & InpuntMemo;
