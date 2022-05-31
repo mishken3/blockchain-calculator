@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-import { CurrencyData } from '../../Converter.types';
 import {
   ContentDataHook,
   InputsData,
@@ -8,6 +7,7 @@ import {
   TabsData,
   TabsDataHook,
 } from './Content.types';
+import { getExchangeCourse } from './Content.utils';
 
 export enum CurrenciesEnum {
   BTC = 'BTC',
@@ -17,8 +17,8 @@ export enum CurrenciesEnum {
 
 const useTabsData = (): TabsDataHook => {
   const [tabsData, setTabsData] = useState<TabsData>({
-    selectedCurrency: CurrenciesEnum.BTC,
-    selectedConversionCurrency: CurrenciesEnum.ETH,
+    selectedCurrency: CurrenciesEnum.USD,
+    selectedConversionCurrency: CurrenciesEnum.BTC,
   });
 
   const handleOnChangeSelectedCurrency = (updatedValue: CurrenciesEnum): void => {
@@ -54,38 +54,28 @@ const useTabsData = (): TabsDataHook => {
   };
 };
 
-/** TODO
- * ВЫНЕСТИ В ОТДЕЛЬНЫЙ ФАЙЛ
- **/
-
-type GetExchangeCourseProps = (
-  to: Omit<CurrencyData, 'coin'>,
-  from: Omit<CurrencyData, 'coin'>,
-) => string;
-
-const getExchangeCourse: GetExchangeCourseProps = (to, from) => {
-  const course = to.price / from.price;
-  return `1 ${to.name} === ${course} ${from.name}`;
-};
-
-/** TODO **/
-
 const useInputCurrency = ({ tabs, currenciesData }: InputsHookProps) => {
-  const exchangeCourse = getExchangeCourse(
-    currenciesData[tabs.selectedCurrency],
-    currenciesData[tabs.selectedConversionCurrency],
-  );
+  const initialInputsData = useMemo(() => {
+    const exchangeInputCourse = getExchangeCourse(
+      currenciesData[tabs.selectedCurrency],
+      currenciesData[tabs.selectedConversionCurrency],
+    );
 
-  const [inputsData, setInputsData] = useState<InputsData>({
-    selectedInput: 10_000,
-    selectedInputExchangeCourse: exchangeCourse,
-
-    selectedConversionInput: 40_000,
-    selectedConversionInputExchangeCourse: getExchangeCourse(
+    const exchangeConversionInputCourse = getExchangeCourse(
       currenciesData[tabs.selectedConversionCurrency],
       currenciesData[tabs.selectedCurrency],
-    ),
-  });
+    );
+
+    return {
+      selectedInput: 100,
+      selectedInputExchangeCourse: exchangeInputCourse,
+
+      selectedConversionInput: exchangeInputCourse,
+      selectedConversionInputExchangeCourse: exchangeConversionInputCourse,
+    };
+  }, []);
+
+  const [inputsData, setInputsData] = useState<InputsData>(initialInputsData);
 
   const handleOnChangeInput = (value: number): void =>
     setInputsData({
@@ -96,23 +86,37 @@ const useInputCurrency = ({ tabs, currenciesData }: InputsHookProps) => {
   useEffect(() => {
     setInputsData({
       ...inputsData,
-      selectedConversionInput: inputsData.selectedInput * 2,
+      selectedConversionInput: inputsData.selectedInput * inputsData.selectedInputExchangeCourse,
     });
-  }, [inputsData.selectedInput]);
+  }, [inputsData.selectedInput, inputsData.selectedInputExchangeCourse]);
+
+  useEffect(() => {
+    setInputsData({
+      ...inputsData,
+      selectedInputExchangeCourse: getExchangeCourse(
+        currenciesData[tabs.selectedCurrency],
+        currenciesData[tabs.selectedConversionCurrency],
+      ),
+      selectedConversionInputExchangeCourse: getExchangeCourse(
+        currenciesData[tabs.selectedConversionCurrency],
+        currenciesData[tabs.selectedCurrency],
+      ),
+    });
+  }, [currenciesData, tabs]);
 
   return { inputsData, handleOnChangeInput };
 };
 
 export const useContent: ContentDataHook = (currenciesData) => {
-  const tabsHookData = useTabsData();
+  const tabs = useTabsData();
 
   const inputsHookData = useInputCurrency({
     currenciesData,
-    tabs: tabsHookData.tabsData,
+    tabs: tabs.tabsData,
   });
 
   return {
-    ...tabsHookData,
+    ...tabs,
     ...inputsHookData,
   };
 };

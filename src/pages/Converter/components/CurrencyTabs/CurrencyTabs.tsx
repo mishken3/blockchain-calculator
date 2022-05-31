@@ -11,7 +11,7 @@ interface CurrencyTabsProps {
 }
 
 export const CurrencyTabs: FC<CurrencyTabsProps> = ({ title, selectedCurrency, handleOnClick }) => {
-  const currencies = [CurrenciesEnum.BTC, CurrenciesEnum.ETH, CurrenciesEnum.USD];
+  const currencies = [CurrenciesEnum.USD, CurrenciesEnum.ETH, CurrenciesEnum.BTC];
   return (
     <div className={styles.currencies}>
       <p className={styles.currencies__title}>{title}</p>

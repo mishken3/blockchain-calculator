@@ -26,10 +26,10 @@ export interface InputsHookProps {
 
 export interface InputsData {
   selectedInput: number;
-  selectedInputExchangeCourse: string;
+  selectedInputExchangeCourse: number;
 
   selectedConversionInput: number;
-  selectedConversionInputExchangeCourse: string;
+  selectedConversionInputExchangeCourse: number;
 }
 
 export interface InputsHookData {

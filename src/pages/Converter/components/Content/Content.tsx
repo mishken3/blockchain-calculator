@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 
 import { arrows } from '../../../../assets/icons';
 import { ContentProps, CurrencyTabs, InputCurrency } from '../index';
@@ -16,6 +16,18 @@ export const Content: FC<ContentProps> = ({ currenciesData }) => {
     handleOnChangeInput,
   } = useContent(currenciesData);
 
+  const exchangeInputCourse = useMemo(
+    () =>
+      `1 ${tabsData.selectedCurrency} = ${inputsData.selectedInputExchangeCourse} ${tabsData.selectedConversionCurrency}`,
+    [tabsData, inputsData.selectedInputExchangeCourse],
+  );
+
+  const exchangeConversionInputCourse = useMemo(
+    () =>
+      `1 ${tabsData.selectedConversionCurrency} = ${inputsData.selectedConversionInputExchangeCourse} ${tabsData.selectedCurrency}`,
+    [tabsData, inputsData.selectedConversionInputExchangeCourse],
+  );
+
   return (
     <>
       <div className={styles.input}>
@@ -29,7 +41,7 @@ export const Content: FC<ContentProps> = ({ currenciesData }) => {
           editable
           value={inputsData.selectedInput}
           onChange={handleOnChangeInput}
-          exchangeCourse={inputsData.selectedInputExchangeCourse}
+          exchangeCourse={exchangeInputCourse}
         />
       </div>
 
@@ -48,7 +60,7 @@ export const Content: FC<ContentProps> = ({ currenciesData }) => {
         <InputCurrency
           editable={false}
           value={inputsData.selectedConversionInput}
-          exchangeCourse={inputsData.selectedConversionInputExchangeCourse}
+          exchangeCourse={exchangeConversionInputCourse}
         />
       </div>
     </>
