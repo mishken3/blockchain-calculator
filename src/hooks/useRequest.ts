@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 
-// eslint-disable-next-line no-promise-executor-return,max-len
 const wait = (ms: number): Promise<void> =>
   new Promise((resolve) => setTimeout(() => resolve(), ms));
 

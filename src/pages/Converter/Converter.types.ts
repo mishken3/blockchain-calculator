@@ -9,7 +9,6 @@ export interface CurrencyData {
 }
 
 export interface CurrenciesDataResponse {
-  /** data - массив, в котором каждый элемент имеет тип CurrencyData**/
   data: CurrencyData[];
 }
 export type CurrenciesData = {
