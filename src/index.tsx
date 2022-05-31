@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Wrapper } from './components/Wrapper';
-import { ConverterPage, PersonalPage, TestPage } from './pages';
+import { ConverterPage, PersonalPage } from './pages';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
@@ -17,8 +17,6 @@ root.render(
           <Route index element={<PersonalPage />} />
 
           <Route path="converter" element={<ConverterPage />} />
-
-          <Route path="/test" element={<TestPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
