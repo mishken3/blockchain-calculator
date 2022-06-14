@@ -1,9 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 
-const wait = (ms: number): Promise<void> =>
-  new Promise((resolve) => setTimeout(() => resolve(), ms));
-
 /**
  * useRequest - кастомный хук для совершения запроса
  * @param endpoint - url запроса
@@ -20,7 +17,6 @@ export const useRequest = <T>(endpoint: string, requestParams: object, deps: nev
       setIsLoading(true);
 
       try {
-        await wait(1000);
         const result: AxiosResponse = await axios(endpoint, requestParams);
 
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
