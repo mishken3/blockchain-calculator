@@ -1,48 +1,21 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 
 import { arrows } from '../../../../assets/icons';
-import useActions from '../../../../hooks/useActions';
-import { useTypedSelector } from '../../../../hooks/useTypedSelector';
-import { ContentProps, CurrencyTabs, InputCurrency } from '../index';
-import { useContent } from './Content.hook';
+import { ContentProps, CurrencyTabs, InputCurrency, useContent } from '../index';
 import styles from './Content.module.scss';
-import { getExchangeCourse } from './Content.utils';
 
 export const Content: FC<ContentProps> = ({ currenciesData }) => {
   const {
+    exchangeInputCourse,
+    exchangeConversionInputCourse,
+
+    converterData,
+
     selectInputTab,
     selectOutputTab,
     reverseTabs,
     changeInput,
-    changeOutput,
-    changeInputExchange,
-    changeOutputExchange,
-  } = useActions();
-
-  const { exchangeInputCourse, exchangeConversionInputCourse } = useContent();
-
-  const converterData = useTypedSelector((state) => state.converter);
-
-  // changes currencyCompare
-  useEffect(() => {
-    const courseInput = getExchangeCourse(
-      currenciesData[converterData.inputTab],
-      currenciesData[converterData.outputTab],
-    );
-    changeInputExchange(courseInput);
-
-    const courseOutput = getExchangeCourse(
-      currenciesData[converterData.outputTab],
-      currenciesData[converterData.inputTab],
-    );
-    changeOutputExchange(courseOutput);
-  }, [currenciesData, converterData.inputTab, converterData.outputTab]);
-
-  // changes inputsFields
-  useEffect(() => {
-    const outputValue = converterData.input * converterData.inputExchangeCourse;
-    changeOutput(outputValue);
-  }, [converterData.input, converterData.inputExchangeCourse]);
+  } = useContent(currenciesData);
 
   return (
     <>

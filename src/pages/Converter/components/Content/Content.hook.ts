@@ -2,6 +2,8 @@ import { useEffect, useMemo } from 'react';
 
 import useActions from '../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import { CurrenciesData } from './../../Converter.types';
+import { ContentDataHook } from './Content.types';
 import { getExchangeCourse } from './Content.utils';
 
 export enum CurrenciesEnum {
@@ -10,7 +12,7 @@ export enum CurrenciesEnum {
   USD = 'USD',
 }
 
-export const useContent = (currenciesData: any) => {
+export const useContent = (currenciesData: CurrenciesData): ContentDataHook => {
   const {
     selectInputTab,
     selectOutputTab,
@@ -56,5 +58,15 @@ export const useContent = (currenciesData: any) => {
     [converterData.inputTab, converterData.outputTab, converterData.inputExchangeCourse],
   );
 
-  return { exchangeInputCourse, exchangeConversionInputCourse };
+  return {
+    exchangeInputCourse,
+    exchangeConversionInputCourse,
+
+    converterData,
+
+    selectInputTab,
+    selectOutputTab,
+    reverseTabs,
+    changeInput,
+  };
 };
