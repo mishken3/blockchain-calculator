@@ -34,6 +34,7 @@ export interface ChangeInputAction {
 
 export interface ChangeOutputAction {
   type: CONVERTER_ACTION_TYPES.CHANGE_OUTPUT;
+  payload: number;
 }
 
 export interface ChangeInputExchangeAction {

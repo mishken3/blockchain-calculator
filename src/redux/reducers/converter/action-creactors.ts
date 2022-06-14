@@ -29,8 +29,9 @@ export const changeInput = (inputValue: number): ChangeInputAction => ({
   payload: inputValue,
 });
 
-export const changeOutput = (): ChangeOutputAction => ({
+export const changeOutput = (outpuValue: number): ChangeOutputAction => ({
   type: CONVERTER_ACTION_TYPES.CHANGE_OUTPUT,
+  payload: outpuValue,
 });
 
 export const changeInputExchange = (course: number): ChangeInputExchangeAction => ({
