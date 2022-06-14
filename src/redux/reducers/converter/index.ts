@@ -1,4 +1,4 @@
-import { CurrenciesEnum } from '../../pages/Converter/components';
+import { CurrenciesEnum } from '../../../pages/Converter/components';
 import { CONVERTER_ACTION_TYPES } from './action-types';
 import { Converter, ConverterAction } from './types';
 
