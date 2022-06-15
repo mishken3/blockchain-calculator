@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as converterActions from './../redux/reducers/converter/action-creactors';
 import * as walletActions from './../redux/reducers/wallet/action-creactors';
 
-const useActions = () => {
+export const useActions = () => {
   const dispatch = useDispatch();
 
   const allActions = {
@@ -14,5 +14,3 @@ const useActions = () => {
 
   return bindActionCreators(allActions, dispatch);
 };
-
-export default useActions;

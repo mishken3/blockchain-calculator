@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useTypedSelector } from '../../hooks';
 import { CurrenciesEnum } from '../Converter/components';
 import { CurrencyAmount, Diagramm } from './components';
 import styles from './Personal.module.scss';

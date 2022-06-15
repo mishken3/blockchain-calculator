@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { useCurrenciesData } from '../../hooks/useCurrenciesData';
+import { useCurrenciesData } from '../../hooks';
 import { Content } from './components';
 
 export const ConverterPage: FC = () => {

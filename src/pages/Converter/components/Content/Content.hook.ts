@@ -1,7 +1,6 @@
 import { useEffect, useMemo } from 'react';
 
-import useActions from '../../../../hooks/useActions';
-import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import { useActions, useTypedSelector } from '../../../../hooks';
 import { CurrenciesData } from './../../Converter.types';
 import { ContentDataHook } from './Content.types';
 import { getExchangeCourse } from './Content.utils';
