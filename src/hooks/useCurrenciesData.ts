@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { useRequest } from '../../hooks';
-import { CurrenciesEnum } from './components';
-import { CurrenciesData, CurrenciesDataResponse } from './Converter.types';
+import { CurrenciesEnum } from '../pages/Converter/components';
+import { CurrenciesData, CurrenciesDataResponse } from '../pages/Converter/Converter.types';
+import { useRequest } from './useRequest';
 
 export const useCurrenciesData = () => {
   const [currenciesData, setCurrenciesData] = useState<CurrenciesData | null>(null);
