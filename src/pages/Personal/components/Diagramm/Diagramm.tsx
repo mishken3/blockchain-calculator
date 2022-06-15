@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import styles from './Diagramm.module.scss';
 
-export const Diagramm = () => {
+interface DiagrammProps {
+  walletAmount: string;
+}
+
+export const Diagramm: FC<DiagrammProps> = ({ walletAmount }) => {
   return (
     <div className={styles.diagramm}>
       <p className={styles.diagramm__balance}>
-        244 645 <span className={styles.diagramm__balance_currency}>USD</span>
+        {walletAmount} <span className={styles.diagramm__balance_currency}>USD</span>
       </p>
     </div>
   );

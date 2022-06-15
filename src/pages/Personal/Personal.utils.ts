@@ -1,3 +1,3 @@
-export const getBeautifyCoinAmount = (num: number) => {
-  return Number(num.toFixed(3)).toLocaleString('ru-RU');
+export const getBeautifyAmount = (num: number) => {
+  return Number(num.toFixed(2)).toLocaleString('ru-RU');
 };
