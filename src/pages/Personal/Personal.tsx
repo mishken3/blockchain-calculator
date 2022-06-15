@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 
 import { useCurrenciesData, useTypedSelector } from '../../hooks';
-import { CurrencyAmount, Diagramm } from './components';
-import styles from './Personal.module.scss';
+import { ContentPersonal, CurrencyAmount } from './components';
 import { getBeautifyAmount } from './Personal.utils';
 
 export const PersonalPage: FC = () => {
@@ -37,22 +36,5 @@ export const PersonalPage: FC = () => {
 
   const walletAmount = getWalletAmount();
 
-  return (
-    <>
-      <div className={styles.layout}>
-        <div className={styles.heading}>
-          <h3 className={styles.heading__title}>Баланс аккаунта</h3>
-          <p className={styles.heading__balance}>
-            {walletAmount} <span className={styles.heading__balance_currency}>USD</span>
-          </p>
-        </div>
-
-        <div className={styles.amount}>
-          <Diagramm walletAmount={walletAmount} />
-
-          <div className={styles.amount__currencies}>{currencyAmounts}</div>
-        </div>
-      </div>
-    </>
-  );
+  return <ContentPersonal walletAmount={walletAmount} currencyAmounts={currencyAmounts} />;
 };
