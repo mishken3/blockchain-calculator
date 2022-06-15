@@ -1,10 +1,13 @@
 import React, { FC } from 'react';
 
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { CurrenciesEnum } from '../Converter/components';
 import { CurrencyAmount, Diagramm } from './components';
 import styles from './Personal.module.scss';
 
 export const PersonalPage: FC = () => {
+  const walletData = useTypedSelector((state) => state.wallet);
+
   return (
     <>
       <div className={styles.layout}>
