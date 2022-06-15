@@ -1,55 +1,54 @@
 import React, { FC } from 'react';
 
 import { arrows } from '../../../../assets/icons';
-import { ContentProps, CurrencyTabs, InputCurrency } from '../index';
-import { useContent } from './Content.hook';
+import { ContentProps, CurrencyTabs, InputCurrency, useContent } from '../index';
 import styles from './Content.module.scss';
 
 export const Content: FC<ContentProps> = ({ currenciesData }) => {
   const {
-    tabsData,
-    handleOnChangeSelectedCurrency,
-    handleOnChangeSelectedConversionCurrency,
-    handleOnReverseTabs,
-
-    inputsData,
-    handleOnChangeInput,
     exchangeInputCourse,
     exchangeConversionInputCourse,
+
+    converterData,
+
+    selectInputTab,
+    selectOutputTab,
+    reverseTabs,
+    changeInput,
   } = useContent(currenciesData);
 
   return (
     <>
       <div className={styles.input}>
         <CurrencyTabs
-          handleOnClick={handleOnChangeSelectedCurrency}
-          selectedCurrency={tabsData.selectedCurrency}
           title="У меня есть"
+          handleOnClick={selectInputTab}
+          selectedCurrency={converterData.inputTab}
         />
 
         <InputCurrency
           editable
-          value={inputsData.selectedInput}
-          onChange={handleOnChangeInput}
+          value={converterData.input}
+          onChange={changeInput}
           exchangeCourse={exchangeInputCourse}
         />
       </div>
 
       <div className={styles.arrows__wrapper}>
-        <button type="button" className={styles.arrows__button} onClick={handleOnReverseTabs}>
+        <button type="button" className={styles.arrows__button} onClick={reverseTabs}>
           <img className={styles.arrows} src={arrows} alt="Exchange Change" />
         </button>
       </div>
 
       <div className={styles.input}>
         <CurrencyTabs
-          handleOnClick={handleOnChangeSelectedConversionCurrency}
-          selectedCurrency={tabsData.selectedConversionCurrency}
           title="Хочу приобрести"
+          handleOnClick={selectOutputTab}
+          selectedCurrency={converterData.outputTab}
         />
         <InputCurrency
           editable={false}
-          value={inputsData.selectedConversionInput}
+          value={converterData.output}
           exchangeCourse={exchangeConversionInputCourse}
         />
       </div>

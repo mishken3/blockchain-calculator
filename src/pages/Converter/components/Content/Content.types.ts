@@ -1,3 +1,4 @@
+import { Converter } from '../../../../redux/reducers/converter/types';
 import { CurrenciesData } from '../../Converter.types';
 import { CurrenciesEnum } from './Content.hook';
 
@@ -5,44 +6,14 @@ export interface ContentProps {
   currenciesData: CurrenciesData;
 }
 
-/** TABS **/
-export interface TabsData {
-  selectedCurrency: CurrenciesEnum;
-  selectedConversionCurrency: CurrenciesEnum;
-}
-
-export interface TabsDataHook {
-  tabsData: TabsData;
-  handleOnChangeSelectedCurrency: (updatedValue: CurrenciesEnum) => void;
-  handleOnChangeSelectedConversionCurrency: (updatedValue: CurrenciesEnum) => void;
-  handleOnReverseTabs: () => void;
-}
-
-/** INPUTS **/
-export interface InputsHookProps {
-  currenciesData: CurrenciesData;
-  tabs: TabsData;
-}
-
-export interface InputsData {
-  selectedInput: number;
-  selectedInputExchangeCourse: number;
-
-  selectedConversionInput: number;
-  selectedConversionInputExchangeCourse: number;
-}
-
-export interface InputsHookData {
-  inputsData: InputsData;
-  handleOnChangeInput: (value: number) => void;
-}
-
-export interface InpuntMemo {
+export interface ContentDataHook {
   exchangeInputCourse: string;
   exchangeConversionInputCourse: string;
-}
 
-/** CONTENT TYPES **/
-export type ContentDataHook = (
-  currenciesData: CurrenciesData,
-) => TabsDataHook & InputsHookData & InpuntMemo;
+  converterData: Converter;
+
+  selectInputTab: (tabName: CurrenciesEnum) => void;
+  selectOutputTab: (tabName: CurrenciesEnum) => void;
+  reverseTabs: () => void;
+  changeInput: (inputValue: number) => void;
+}
