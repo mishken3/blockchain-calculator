@@ -1,0 +1,52 @@
+@use '../../../../assets/styles/constants.scss' as *;
+
+.currency::before {
+  content: '';
+  width: 8px;
+  border-radius: 4px;
+  opacity: 0.8;
+
+  /** CHANGE COLOR LATER, JUST FOR LAYOUT **/
+  background-color: coral;
+}
+
+.currency {
+  display: flex;
+  gap: 12px;
+
+  &__logo {
+    width: 32px;
+    height: 32px;
+
+    align-self: center;
+  }
+
+  &__money {
+    display: flex;
+    flex-direction: column;
+
+    &_total {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0em;
+      text-align: left;
+
+      color: $color__grey__70;
+
+      margin: 0;
+    }
+
+    &_number {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 24px;
+      letter-spacing: 0em;
+      text-align: left;
+
+      color: $color__black;
+
+      margin: 0;
+    }
+  }
+}

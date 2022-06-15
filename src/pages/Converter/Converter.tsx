@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
+import { useCurrenciesData } from '../../hooks';
 import { Content } from './components';
-import { useCurrenciesData } from './Converter.request';
 
 export const ConverterPage: FC = () => {
   const { currenciesData, isLoading, isHasError } = useCurrenciesData();
