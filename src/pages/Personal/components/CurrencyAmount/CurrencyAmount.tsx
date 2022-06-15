@@ -4,17 +4,18 @@ import { CurrenciesEnum } from '../../../Converter/components';
 import styles from './CurrencyAmount.module.scss';
 
 interface CurrencyAmountProps {
-  coin: CurrenciesEnum;
+  coinName: CurrenciesEnum;
+  coinAmount: string;
 }
 
-export const CurrencyAmount: FC<CurrencyAmountProps> = ({ coin }) => {
+export const CurrencyAmount: FC<CurrencyAmountProps> = ({ coinName, coinAmount }) => {
   return (
     <div className={styles.currency}>
-      <img className={styles.currency__logo} alt={coin} />
+      <img className={styles.currency__logo} alt={coinName} />
 
       <div className={styles.currency__money}>
         <p className={styles.currency__money_total}>Total</p>
-        <p className={styles.currency__money_number}>20 000 USD</p>
+        <p className={styles.currency__money_number}>{coinAmount} USD</p>
       </div>
     </div>
   );

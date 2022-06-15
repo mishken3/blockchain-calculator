@@ -1,12 +1,28 @@
 import React, { FC } from 'react';
 
-import { useTypedSelector } from '../../hooks';
-import { CurrenciesEnum } from '../Converter/components';
+import { useCurrenciesData, useTypedSelector } from '../../hooks';
 import { CurrencyAmount, Diagramm } from './components';
 import styles from './Personal.module.scss';
+import { getBeautifyCoinAmount } from './Personal.utils';
 
 export const PersonalPage: FC = () => {
   const walletData = useTypedSelector((state) => state.wallet);
+  const { currenciesData, isLoading, isHasError } = useCurrenciesData();
+
+  if (isLoading) {
+    return <h1>Загрузка курсов валют...</h1>;
+  }
+  if (isHasError || !currenciesData) {
+    return <h1>Ошибка загрузки валют: перезагрузите страницу.</h1>;
+  }
+
+  const currencyAmounts = Object.values(currenciesData).map((currency) => {
+    const coinAmount = currency.price * walletData[currency.name];
+    const beautifyCoinAmount = getBeautifyCoinAmount(coinAmount);
+    return (
+      <CurrencyAmount key={currency.id} coinName={currency.name} coinAmount={beautifyCoinAmount} />
+    );
+  });
 
   return (
     <>
@@ -21,11 +37,7 @@ export const PersonalPage: FC = () => {
         <div className={styles.amount}>
           <Diagramm />
 
-          <div className={styles.amount__currencies}>
-            <CurrencyAmount coin={CurrenciesEnum.ETH} />
-            <CurrencyAmount coin={CurrenciesEnum.BTC} />
-            <CurrencyAmount coin={CurrenciesEnum.USD} />
-          </div>
+          <div className={styles.amount__currencies}>{currencyAmounts}</div>
         </div>
       </div>
     </>

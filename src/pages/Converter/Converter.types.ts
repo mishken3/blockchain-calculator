@@ -14,7 +14,7 @@ export interface CurrenciesDataResponse {
 export type CurrenciesData = {
   [key in CurrenciesEnum]: {
     id: string;
-    name: string;
+    name: CurrenciesEnum;
     price: number;
   };
 };
