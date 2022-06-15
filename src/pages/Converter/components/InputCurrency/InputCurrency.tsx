@@ -30,7 +30,7 @@ export const InputCurrency: FC<InputCurrencyProps> = ({
     onChange(Number(clearedValue));
   };
 
-  const inputValue = value.toLocaleString();
+  const inputValue = value.toLocaleString('ru-RU');
 
   return (
     <div className={styles.input}>
