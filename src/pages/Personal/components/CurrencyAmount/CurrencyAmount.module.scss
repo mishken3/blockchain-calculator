@@ -1,24 +1,26 @@
 @use '../../../../assets/styles/constants.scss' as *;
 
-.currency::before {
-  content: '';
-  width: 8px;
-  border-radius: 4px;
-  opacity: 0.8;
-
-  /** CHANGE COLOR LATER, JUST FOR LAYOUT **/
-  background-color: coral;
-}
-
 .currency {
   display: flex;
   gap: 12px;
 
-  &__logo {
-    width: 32px;
-    height: 32px;
+  &::before {
+    content: '';
+    width: 8px;
+    border-radius: 4px;
+    opacity: 0.8;
 
-    align-self: center;
+    /** TODO CHANGE COLOR LATER, JUST FOR LAYOUT **/
+    background-color: coral;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    &_img {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   &__money {
