@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { useCurrenciesData, useTypedSelector } from '../../hooks';
-import { ContentPersonal, CurrencyAmount } from './components';
+import { CoinItem, ContentPersonal } from './components';
 import { getBeautifyAmount } from './Personal.utils';
 
 export const PersonalPage: FC = () => {
@@ -16,10 +16,16 @@ export const PersonalPage: FC = () => {
   }
 
   const currencyAmounts = Object.values(currenciesData).map((currency) => {
-    const coinAmount = currency.price * walletData[currency.name];
-    const beautifyCoinAmount = getBeautifyAmount(coinAmount);
+    const coinAmount = walletData[currency.name];
+    const coinAmountUSD = currency.price * walletData[currency.name];
+    const beautifyCoinAmount = getBeautifyAmount(coinAmountUSD);
     return (
-      <CurrencyAmount key={currency.id} coinName={currency.name} coinAmount={beautifyCoinAmount} />
+      <CoinItem
+        key={currency.id}
+        coinName={currency.name}
+        coinAmount={coinAmount}
+        coinAmountUSD={beautifyCoinAmount}
+      />
     );
   });
 
