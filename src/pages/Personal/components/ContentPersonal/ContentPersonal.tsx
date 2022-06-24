@@ -5,10 +5,10 @@ import styles from './ContentPersonal.module.scss';
 
 interface ContentPersonalProps {
   walletAmount: string;
-  currencyAmounts: React.ReactElement[];
+  coinItems: React.ReactElement[];
 }
 
-export const ContentPersonal: FC<ContentPersonalProps> = ({ walletAmount, currencyAmounts }) => {
+export const ContentPersonal: FC<ContentPersonalProps> = ({ walletAmount, coinItems }) => {
   return (
     <>
       <div className={styles.layout}>
@@ -22,7 +22,12 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({ walletAmount, curren
         <div className={styles.amount}>
           <Diagramm walletAmount={walletAmount} />
 
-          <div className={styles.amount__currencies}>{currencyAmounts}</div>
+          <div className={styles.amount__coins}>
+            {coinItems}
+            <button>
+              <span>Exchange</span>
+            </button>
+          </div>
         </div>
       </div>
     </>

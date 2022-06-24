@@ -15,7 +15,7 @@ export const PersonalPage: FC = () => {
     return <h1>Ошибка загрузки валют: перезагрузите страницу.</h1>;
   }
 
-  const currencyAmounts = Object.values(currenciesData).map((currency) => {
+  const CoinItems = Object.values(currenciesData).map((currency) => {
     const coinAmount = walletData[currency.name];
     const coinAmountUSD = currency.price * walletData[currency.name];
     const beautifyCoinAmount = getBeautifyAmount(coinAmountUSD);
@@ -42,5 +42,5 @@ export const PersonalPage: FC = () => {
 
   const walletAmount = getWalletAmount();
 
-  return <ContentPersonal walletAmount={walletAmount} currencyAmounts={currencyAmounts} />;
+  return <ContentPersonal walletAmount={walletAmount} coinItems={CoinItems} />;
 };
