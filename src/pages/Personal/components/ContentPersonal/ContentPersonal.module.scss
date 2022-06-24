@@ -42,6 +42,9 @@
 
   align-items: center;
 
+  /* TODO Deal with this hard-code shieeeet */
+  height: 600px;
+
   &__coins {
     display: flex;
     flex-direction: column;
@@ -71,11 +74,13 @@
   }
 
   &__exchange {
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
 
-    & > input {
-      box-sizing: border-box;
-      height: 100%;
+    & img {
+      transform: rotate(90deg);
     }
   }
 }

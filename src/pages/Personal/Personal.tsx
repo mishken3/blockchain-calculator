@@ -42,5 +42,11 @@ export const PersonalPage: FC = () => {
 
   const walletAmount = getWalletAmount();
 
-  return <ContentPersonal walletAmount={walletAmount} coinItems={CoinItems} />;
+  return (
+    <ContentPersonal
+      walletAmount={walletAmount}
+      coinItems={CoinItems}
+      currenciesData={currenciesData}
+    />
+  );
 };
