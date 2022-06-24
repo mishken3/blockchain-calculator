@@ -1,4 +1,4 @@
-import { CurrenciesEnum } from './components';
+import { CurrenciesEnum } from './types';
 
 /** REQUEST **/
 export interface CurrencyData {
@@ -11,6 +11,7 @@ export interface CurrencyData {
 export interface CurrenciesDataResponse {
   data: CurrencyData[];
 }
+
 export type CurrenciesData = {
   [key in CurrenciesEnum]: {
     id: string;
@@ -20,7 +21,7 @@ export type CurrenciesData = {
 };
 
 export interface CurrenciesDataHook {
-  data: CurrenciesData | null;
+  currenciesData: CurrenciesData | null;
   isLoading: boolean;
   isHasError: boolean;
 }

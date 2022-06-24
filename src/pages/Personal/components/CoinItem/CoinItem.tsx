@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { CoinsIcons } from '../../../../assets/icons';
-import { CurrenciesEnum } from '../../../Converter/components';
+import { CurrenciesEnum } from '../../../../types/types';
 import styles from './CoinItem.module.scss';
 
 interface CoinItemProps {

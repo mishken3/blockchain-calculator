@@ -1,4 +1,4 @@
-import { CurrencyData } from '../../Converter.types';
+import { CurrencyData } from '../../types/CurrenciesData.types';
 
 type GetExchangeCourseType = (
   coinFrom: Omit<CurrencyData, 'coin'>,

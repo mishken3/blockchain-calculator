@@ -1,10 +1,10 @@
 import cn from 'classnames';
 import React, { FC } from 'react';
 
-import { CurrenciesEnum } from '../Content';
+import { CurrenciesEnum } from '../../../../types/types';
 import styles from './CurrencyTabs.module.scss';
 
-interface CurrencyTabsProps {
+export interface CurrencyTabsProps {
   title: string;
   selectedCurrency: string;
   handleOnClick: (value: CurrenciesEnum) => void;

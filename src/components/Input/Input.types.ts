@@ -1,10 +1,8 @@
-import { Converter } from '../../../../redux/reducers/converter/types';
-import { CurrenciesData } from '../../Converter.types';
-import { CurrenciesEnum } from './Content.hook';
+import { Converter } from '../../redux/reducers/converter/types';
+import { CurrenciesEnum } from '../../types/types';
+import { CurrencyTabsProps, InputCurrencyProps } from './components';
 
-export interface ContentProps {
-  currenciesData: CurrenciesData;
-}
+export type InputPropsT = CurrencyTabsProps & InputCurrencyProps;
 
 export interface ContentDataHook {
   exchangeInputCourse: string;

@@ -1,15 +1,9 @@
 import { useEffect, useMemo } from 'react';
 
-import { useActions, useTypedSelector } from '../../../../hooks';
-import { CurrenciesData } from './../../Converter.types';
-import { ContentDataHook } from './Content.types';
-import { getExchangeCourse } from './Content.utils';
-
-export enum CurrenciesEnum {
-  BTC = 'BTC',
-  ETH = 'ETH',
-  USD = 'USD',
-}
+import { useActions, useTypedSelector } from '../../hooks';
+import { CurrenciesData } from '../../types/CurrenciesData.types';
+import { ContentDataHook } from './Input.types';
+import { getExchangeCourse } from './Input.utils';
 
 export const useContent = (currenciesData: CurrenciesData): ContentDataHook => {
   const {

@@ -1,4 +1,4 @@
-import { CurrenciesEnum } from '../../../pages/Converter/components';
+import { CurrenciesEnum } from '../../../types/types';
 import { WALLET_ACTION_TYPES } from './action-types';
 import { Wallet, WalletAction } from './types';
 

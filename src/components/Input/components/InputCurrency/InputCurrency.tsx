@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import styles from './InputCurrency.module.scss';
 import { getClearedValue, isMaxLength, isOnlyNumbers } from './InputCurrency.utils';
 
-interface InputCurrencyProps {
+export interface InputCurrencyProps {
   value: number;
   editable: boolean;
   exchangeCourse: string;
