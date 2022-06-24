@@ -3,6 +3,7 @@
 .layout {
   display: flex;
   flex-direction: column;
+  gap: 24px;
 }
 
 .heading {
@@ -10,48 +11,71 @@
   flex-direction: column;
   gap: 8px;
 
+  & > h3,
+  p {
+    margin: 0;
+  }
+
   &__title {
     font-size: 24px;
     font-weight: 700;
     line-height: 30px;
-    letter-spacing: 0em;
-    text-align: left;
 
     color: $color__grey__60;
-
-    margin: 0;
   }
 
   &__balance {
     font-size: 20px;
     font-weight: 500;
     line-height: 28px;
-    letter-spacing: 0em;
-    text-align: left;
 
-    margin: 0;
-
-    &_currency {
+    & > span {
       font-size: 12px;
-      font-weight: 500;
       line-height: 18px;
-      letter-spacing: 0em;
-      text-align: left;
     }
   }
-
-  margin-bottom: 24px;
 }
 
-.amount {
+.content {
   display: flex;
   gap: 84px;
 
-  &__currencies {
-    align-self: center;
+  align-items: center;
 
+  &__coins {
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    &_button {
+      width: fit-content;
+      align-self: center;
+
+      border: none;
+      background: none;
+
+      &:hover {
+        color: $color__black;
+      }
+
+      & > span {
+        font-weight: 500;
+        color: $color__black;
+        opacity: 0.8;
+        cursor: pointer;
+
+        padding-bottom: 1px;
+        border-bottom: 2px solid $color__brown;
+      }
+    }
+  }
+
+  &__exchange {
+    height: 100%;
+
+    & > input {
+      box-sizing: border-box;
+      height: 100%;
+    }
   }
 }
