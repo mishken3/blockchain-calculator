@@ -1,8 +1,12 @@
 @use '../../../../assets/styles/constants.scss' as *;
 
-.currency {
+.coin {
   display: flex;
-  gap: 12px;
+  gap: 8px;
+  justify-content: space-between;
+
+  width: 200px;
+  height: 40px;
 
   &::before {
     content: '';
@@ -10,45 +14,37 @@
     border-radius: 4px;
     opacity: 0.8;
 
-    /** TODO CHANGE COLOR LATER, JUST FOR LAYOUT **/
+    // TODO CHANGE COLOR LATER FOR EVERY COIN
     background-color: coral;
   }
 
-  &__logo {
+  &__icon {
     display: flex;
     align-items: center;
-    &_img {
+
+    & > img {
       width: 32px;
       height: 32px;
     }
   }
 
-  &__money {
-    display: flex;
-    flex-direction: column;
-
-    &_total {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      letter-spacing: 0em;
-      text-align: left;
-
-      color: $color__grey__70;
-
+  &__amount {
+    & > p {
       margin: 0;
     }
 
+    &_title {
+      font-size: 12px;
+      font-weight: 400;
+
+      color: $color__grey__70;
+    }
+
     &_number {
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 24px;
-      letter-spacing: 0em;
-      text-align: left;
+      font-size: 16px;
+      font-weight: 500;
 
       color: $color__black;
-
-      margin: 0;
     }
   }
 }

@@ -10,19 +10,16 @@ interface CoinItemProps {
   coinAmountUSD: string;
 }
 
-export const CoinItem: FC<CoinItemProps> = ({ coinName, coinAmount, coinAmountUSD }) => {
-  console.log('coinAmount :>> ', coinAmount);
+export const CoinItem: FC<CoinItemProps> = ({ coinName, coinAmountUSD }) => {
   return (
-    <div className={styles.currency}>
-      <div>
-        <div className={styles.currency__logo}>
-          <img className={styles.currency__logo_img} src={CoinsIcons[coinName]} alt={coinName} />
-        </div>
+    <div className={styles.coin}>
+      <div className={styles.coin__icon}>
+        <img src={CoinsIcons[coinName]} alt={coinName} />
+      </div>
 
-        <div className={styles.currency__money}>
-          <p className={styles.currency__money_total}>Total</p>
-          <p className={styles.currency__money_number}>{coinAmountUSD} USD</p>
-        </div>
+      <div className={styles.coin__amount}>
+        <p className={styles.coin__amount_title}>Total</p>
+        <p className={styles.coin__amount_number}>{coinAmountUSD} USD</p>
       </div>
     </div>
   );
