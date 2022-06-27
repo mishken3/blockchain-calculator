@@ -1,24 +1,27 @@
 import { useActions } from '../../../../hooks';
 import { Input } from '../../../../redux/reducers/input/types';
-import { CurrenciesData } from '../../../../types/CurrenciesData.types';
 import { CurrenciesEnum } from '../../../../types/types';
 import { useTypedSelector } from './../../../../hooks/useTypedSelector';
 
-export const useInputExhchage = (currenciesData: CurrenciesData) => {
+interface InputExhchageHook {
+  exchangeAction: (inputData: Input) => void;
+}
+
+export const useInputExhchage = (): InputExhchageHook => {
   const { updateWallet } = useActions();
   const walletData = useTypedSelector((state) => state.wallet);
 
-  const exchangeAction = (inputData: Input): void => {
+  const exchangeAction = (inputData: Input) => {
     const coinFrom = inputData.inputTab;
     const coinTo = inputData.outputTab;
-    if (coinFrom === coinTo) return;
+    const coinFromBalance = walletData[inputData.inputTab];
 
-    const convertedInputValue = inputData.input / currenciesData[inputData.outputTab].price;
+    if (coinFrom === coinTo || inputData.input > coinFromBalance) return;
 
     updateWallet({
       ...walletData,
       [CurrenciesEnum[coinFrom]]: walletData[CurrenciesEnum[coinFrom]] - inputData.input,
-      [CurrenciesEnum[coinTo]]: walletData[CurrenciesEnum[coinTo]] + convertedInputValue,
+      [CurrenciesEnum[coinTo]]: walletData[CurrenciesEnum[coinTo]] + inputData.output,
     });
   };
 

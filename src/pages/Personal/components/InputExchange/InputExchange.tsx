@@ -21,9 +21,10 @@ export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
     reverseTabs,
     changeInput,
   } = useInput(currenciesData);
-  const { exchangeAction } = useInputExhchage(currenciesData);
 
-  const handleExchangeAction = () => {
+  const { exchangeAction } = useInputExhchage();
+
+  const handleExchangeAction = (): void => {
     exchangeAction(inputData);
   };
 
