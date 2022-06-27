@@ -5,7 +5,8 @@ import { CurrenciesData } from '../../types/CurrenciesData.types';
 import { ContentDataHook } from './Input.types';
 import { getExchangeCourse } from './Input.utils';
 
-export const useContent = (currenciesData: CurrenciesData): ContentDataHook => {
+/* TODO Rename useContent -> useInput */
+export const useInput = (currenciesData: CurrenciesData): ContentDataHook => {
   const {
     selectInputTab,
     selectOutputTab,

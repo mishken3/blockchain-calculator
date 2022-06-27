@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Input, ReverseTabsButton, useContent } from '../../../../components';
+import { Input, ReverseTabsButton, useInput } from '../../../../components';
 import { CurrenciesData } from '../../../../types/CurrenciesData.types';
 import styles from './InputExchange.module.scss';
 
@@ -19,7 +19,7 @@ export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
     selectOutputTab,
     reverseTabs,
     changeInput,
-  } = useContent(currenciesData);
+  } = useInput(currenciesData);
 
   return (
     <div className={styles.exchange}>
