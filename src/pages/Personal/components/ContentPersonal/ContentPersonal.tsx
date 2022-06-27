@@ -1,23 +1,25 @@
 import React, { FC, useState } from 'react';
 
 import { Input, ReverseTabsButton, useContent } from '../../../../components';
+import { Wallet } from '../../../../redux/reducers/wallet/types';
 import { CurrenciesData } from '../../../../types/CurrenciesData.types';
+import { getBeautifyAmount } from '../../Personal.utils';
+import { CoinItem } from '../CoinItem';
 import { Diagramm } from '../Diagramm';
 import styles from './ContentPersonal.module.scss';
 
 interface ContentPersonalProps {
   walletAmount: string;
-  coinItems: React.ReactElement[];
+  walletData: Wallet;
   currenciesData: CurrenciesData;
 }
 
 export const ContentPersonal: FC<ContentPersonalProps> = ({
   walletAmount,
-  coinItems,
+  walletData,
   currenciesData,
 }) => {
   const [isExchangeOpen, setExchangeOpen] = useState(false);
-  console.log('isExchangeOpen :>> ', isExchangeOpen);
   const handlerSetExchangeOpen = () => {
     setExchangeOpen((pervIsExchangeOpen) => !pervIsExchangeOpen);
   };
@@ -34,6 +36,20 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({
     changeInput,
   } = useContent(currenciesData);
 
+  const CoinItems = Object.values(currenciesData).map((currency) => {
+    const coinAmount = walletData[currency.name];
+    const coinAmountUSD = currency.price * walletData[currency.name];
+    const beautifyCoinAmount = getBeautifyAmount(coinAmountUSD);
+    return (
+      <CoinItem
+        key={currency.id}
+        coinName={currency.name}
+        coinAmount={coinAmount}
+        coinAmountUSD={beautifyCoinAmount}
+      />
+    );
+  });
+
   return (
     <div className={styles.layout}>
       <div className={styles.heading}>
@@ -47,7 +63,7 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({
         <Diagramm walletAmount={walletAmount} />
 
         <div className={styles.content__coins}>
-          {coinItems}
+          {CoinItems}
           <button className={styles.content__coins_button} onClick={handlerSetExchangeOpen}>
             <span>Обменять</span>
           </button>
