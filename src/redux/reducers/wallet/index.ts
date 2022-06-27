@@ -12,8 +12,7 @@ export default (state = initialState, action: WalletAction) => {
   switch (action.type) {
     case WALLET_ACTION_TYPES.UPDATE_WALLET: {
       return {
-        ...state,
-        updatedValue: action.payload,
+        ...action.payload,
       };
     }
 
