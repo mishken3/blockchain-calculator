@@ -18,6 +18,10 @@
     }
   }
 
+  &__error {
+    color: $color__black;
+  }
+
   & img {
     transform: rotate(90deg);
   }

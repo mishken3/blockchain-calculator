@@ -22,7 +22,7 @@ export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
     changeInput,
   } = useInput(currenciesData);
 
-  const { exchangeAction } = useInputExhchage();
+  const { exchangeAction, isSellingCoinBalanceLow } = useInputExhchage(inputData);
 
   const handleExchangeAction = (): void => {
     exchangeAction(inputData);
@@ -50,9 +50,16 @@ export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
         value={inputData.output}
         exchangeCourse={exchangeConversionInputCourse}
       />
-      <button className={styles.exchange__button} onClick={handleExchangeAction}>
+      <button
+        className={styles.exchange__button}
+        onClick={handleExchangeAction}
+        disabled={isSellingCoinBalanceLow}>
         Stonks
       </button>
+
+      {isSellingCoinBalanceLow && (
+        <p className={styles.exchange__error}>Слишком мало {inputData.inputTab} для покупки.</p>
+      )}
     </div>
   );
 };
