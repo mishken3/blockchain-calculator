@@ -1,12 +1,11 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 
-import { Input, ReverseTabsButton, useContent } from '../../../../components';
 import { Wallet } from '../../../../redux/reducers/wallet/types';
 import { CurrenciesData } from '../../../../types/CurrenciesData.types';
 import { getBeautifyAmount } from '../../Personal.utils';
-import { CoinItem } from '../CoinItem';
-import { Diagramm } from '../Diagramm';
+import { CoinItem, Diagramm, InputExchange } from '../index';
 import styles from './ContentPersonal.module.scss';
+import { useContentPersonal } from './useContentPersonal.hook';
 
 interface ContentPersonalProps {
   walletAmount: string;
@@ -19,35 +18,11 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({
   walletData,
   currenciesData,
 }) => {
-  const [isExchangeOpen, setExchangeOpen] = useState(false);
-  const handlerSetExchangeOpen = () => {
-    setExchangeOpen((pervIsExchangeOpen) => !pervIsExchangeOpen);
-  };
-
-  const {
-    exchangeInputCourse,
-    exchangeConversionInputCourse,
-
-    converterData,
-
-    selectInputTab,
-    selectOutputTab,
-    reverseTabs,
-    changeInput,
-  } = useContent(currenciesData);
+  const { isExchangeOpen, handlerSetExchangeOpen } = useContentPersonal();
 
   const CoinItems = Object.values(currenciesData).map((currency) => {
-    const coinAmount = walletData[currency.name];
-    const coinAmountUSD = currency.price * walletData[currency.name];
-    const beautifyCoinAmount = getBeautifyAmount(coinAmountUSD);
-    return (
-      <CoinItem
-        key={currency.id}
-        coinName={currency.name}
-        coinAmount={coinAmount}
-        coinAmountUSD={beautifyCoinAmount}
-      />
-    );
+    const coinAmountUSD = getBeautifyAmount(currency.price * walletData[currency.name]);
+    return <CoinItem key={currency.id} coinName={currency.name} coinAmountUSD={coinAmountUSD} />;
   });
 
   return (
@@ -69,32 +44,7 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({
           </button>
         </div>
 
-        {isExchangeOpen ? (
-          <div className={styles.content__exchange}>
-            <Input
-              title="Хочу продать"
-              handleOnClick={selectInputTab}
-              selectedCurrency={converterData.inputTab}
-              editable
-              value={converterData.input}
-              onChange={changeInput}
-              exchangeCourse={exchangeInputCourse}
-            />
-
-            <ReverseTabsButton reverseTabs={reverseTabs} />
-
-            <Input
-              title="Хочу приобрести"
-              handleOnClick={selectOutputTab}
-              selectedCurrency={converterData.outputTab}
-              editable={false}
-              value={converterData.output}
-              exchangeCourse={exchangeConversionInputCourse}
-            />
-
-            <button className={styles.content__exchange_trade}>Купить</button>
-          </div>
-        ) : null}
+        {isExchangeOpen ? <InputExchange currenciesData={currenciesData} /> : null}
       </div>
     </div>
   );

@@ -1,0 +1,24 @@
+@use '../../../../assets/styles/constants.scss' as *;
+
+.exchange {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+
+  &__button {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    color: $color__grey__70;
+
+    &:hover {
+      color: $color__black;
+    }
+  }
+
+  & img {
+    transform: rotate(90deg);
+  }
+}
