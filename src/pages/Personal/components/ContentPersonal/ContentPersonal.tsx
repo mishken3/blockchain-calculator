@@ -21,8 +21,16 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({
   const { isExchangeOpen, handlerSetExchangeOpen } = useContentPersonal();
 
   const CoinItems = Object.values(currenciesData).map((currency) => {
+    const coinAmount = walletData[currency.name];
     const coinAmountUSD = getBeautifyAmount(currency.price * walletData[currency.name]);
-    return <CoinItem key={currency.id} coinName={currency.name} coinAmountUSD={coinAmountUSD} />;
+    return (
+      <CoinItem
+        key={currency.id}
+        coinName={currency.name}
+        coinAmountUSD={coinAmountUSD}
+        coinAmount={coinAmount}
+      />
+    );
   });
 
   return (
@@ -44,7 +52,7 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({
           </button>
         </div>
 
-        {isExchangeOpen ? <InputExchange currenciesData={currenciesData} /> : null}
+        {isExchangeOpen && <InputExchange currenciesData={currenciesData} />}
       </div>
     </div>
   );

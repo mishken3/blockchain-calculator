@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import { Input, ReverseTabsButton, useInput } from '../../../../components';
 import { CurrenciesData } from '../../../../types/CurrenciesData.types';
 import styles from './InputExchange.module.scss';
+import { useInputExhchage } from './useInputExchange.hook';
 
 interface InputExchangeProps {
   currenciesData: CurrenciesData;
@@ -20,6 +21,11 @@ export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
     reverseTabs,
     changeInput,
   } = useInput(currenciesData);
+  const { exchangeAction } = useInputExhchage(currenciesData);
+
+  const handleExchangeAction = () => {
+    exchangeAction(converterData);
+  };
 
   return (
     <div className={styles.exchange}>
@@ -43,7 +49,9 @@ export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
         value={converterData.output}
         exchangeCourse={exchangeConversionInputCourse}
       />
-      <button className={styles.exchange__button}>Stonks</button>
+      <button className={styles.exchange__button} onClick={handleExchangeAction}>
+        Stonks
+      </button>
     </div>
   );
 };
