@@ -12,7 +12,7 @@ export const ContentConverter: FC<ContentConverterProps> = ({ currenciesData }) 
     exchangeInputCourse,
     exchangeConversionInputCourse,
 
-    converterData,
+    inputData,
 
     selectInputTab,
     selectOutputTab,
@@ -25,9 +25,9 @@ export const ContentConverter: FC<ContentConverterProps> = ({ currenciesData }) 
       <Input
         title="У меня есть"
         handleOnClick={selectInputTab}
-        selectedCurrency={converterData.inputTab}
+        selectedCurrency={inputData.inputTab}
         editable
-        value={converterData.input}
+        value={inputData.input}
         onChange={changeInput}
         exchangeCourse={exchangeInputCourse}
       />
@@ -37,9 +37,9 @@ export const ContentConverter: FC<ContentConverterProps> = ({ currenciesData }) 
       <Input
         title="Хочу приобрести"
         handleOnClick={selectOutputTab}
-        selectedCurrency={converterData.outputTab}
+        selectedCurrency={inputData.outputTab}
         editable={false}
-        value={converterData.output}
+        value={inputData.output}
         exchangeCourse={exchangeConversionInputCourse}
       />
     </>

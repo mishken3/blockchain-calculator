@@ -1,3 +1,3 @@
 export * from './CurrencyTabs';
-export * from './InputCurrency';
+export * from './InputField';
 export * from './ReverseTabsButton';

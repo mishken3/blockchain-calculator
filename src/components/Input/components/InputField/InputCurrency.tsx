@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 
-import styles from './InputCurrency.module.scss';
-import { getClearedValue, isMaxLength, isOnlyNumbers } from './InputCurrency.utils';
+import styles from './InputField.module.scss';
+import { getClearedValue, isMaxLength, isOnlyNumbers } from './InputField.utils';
 
-export interface InputCurrencyProps {
+export interface InputFieldProps {
   value: number;
   editable: boolean;
   exchangeCourse: string;
@@ -11,7 +11,7 @@ export interface InputCurrencyProps {
   onChange?: (value: number) => void;
 }
 
-export const InputCurrency: FC<InputCurrencyProps> = ({
+export const InputField: FC<InputFieldProps> = ({
   value,
   editable,
   exchangeCourse,
@@ -24,8 +24,7 @@ export const InputCurrency: FC<InputCurrencyProps> = ({
     const isCorrectNumber = isOnlyNumbers(clearedValue);
     const allowedLength = isMaxLength(clearedValue);
 
-    if (!allowedLength) return;
-    if (!isCorrectNumber) return;
+    if (!allowedLength || !isCorrectNumber) return;
 
     onChange(Number(clearedValue));
   };

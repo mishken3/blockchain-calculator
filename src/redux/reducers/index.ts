@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import converterReducer from './converter';
+import inputReducer from './input';
 import walletReducer from './wallet';
 
 const rootReducer = combineReducers({
-  converter: converterReducer,
+  input: inputReducer,
   wallet: walletReducer,
 });
 

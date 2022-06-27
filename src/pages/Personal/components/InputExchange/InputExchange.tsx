@@ -14,7 +14,7 @@ export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
     exchangeInputCourse,
     exchangeConversionInputCourse,
 
-    converterData,
+    inputData,
 
     selectInputTab,
     selectOutputTab,
@@ -24,7 +24,7 @@ export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
   const { exchangeAction } = useInputExhchage(currenciesData);
 
   const handleExchangeAction = () => {
-    exchangeAction(converterData);
+    exchangeAction(inputData);
   };
 
   return (
@@ -32,9 +32,9 @@ export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
       <Input
         title="Хочу продать"
         handleOnClick={selectInputTab}
-        selectedCurrency={converterData.inputTab}
+        selectedCurrency={inputData.inputTab}
         editable
-        value={converterData.input}
+        value={inputData.input}
         onChange={changeInput}
         exchangeCourse={exchangeInputCourse}
       />
@@ -44,9 +44,9 @@ export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
       <Input
         title="Хочу приобрести"
         handleOnClick={selectOutputTab}
-        selectedCurrency={converterData.outputTab}
+        selectedCurrency={inputData.outputTab}
         editable={false}
-        value={converterData.output}
+        value={inputData.output}
         exchangeCourse={exchangeConversionInputCourse}
       />
       <button className={styles.exchange__button} onClick={handleExchangeAction}>

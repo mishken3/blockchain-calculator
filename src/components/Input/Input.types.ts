@@ -1,14 +1,14 @@
-import { Converter } from '../../redux/reducers/converter/types';
+import { Input } from '../../redux/reducers/input/types';
 import { CurrenciesEnum } from '../../types/types';
-import { CurrencyTabsProps, InputCurrencyProps } from './components';
+import { CurrencyTabsProps, InputFieldProps } from './components';
 
-export type InputPropsT = CurrencyTabsProps & InputCurrencyProps;
+export type InputPropsT = CurrencyTabsProps & InputFieldProps;
 
-export interface ContentDataHook {
+export interface InputDataHook {
   exchangeInputCourse: string;
   exchangeConversionInputCourse: string;
 
-  converterData: Converter;
+  inputData: Input;
 
   selectInputTab: (tabName: CurrenciesEnum) => void;
   selectOutputTab: (tabName: CurrenciesEnum) => void;

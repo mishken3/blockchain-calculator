@@ -1,8 +1,8 @@
 import { CurrenciesEnum } from '../../../types/types';
-import { CONVERTER_ACTION_TYPES } from './action-types';
-import { Converter, ConverterAction } from './types';
+import { INPUT_ACTION_TYPES } from './action-types';
+import { ConverterAction, Input } from './types';
 
-const initialState: Converter = {
+const initialState: Input = {
   inputTab: CurrenciesEnum.BTC,
   outputTab: CurrenciesEnum.ETH,
 
@@ -14,21 +14,21 @@ const initialState: Converter = {
 
 export default (state = initialState, action: ConverterAction) => {
   switch (action.type) {
-    case CONVERTER_ACTION_TYPES.SELECT_INPUT_TAB: {
+    case INPUT_ACTION_TYPES.SELECT_INPUT_TAB: {
       return {
         ...state,
         inputTab: action.payload,
       };
     }
 
-    case CONVERTER_ACTION_TYPES.SELECT_OUTPUT_TAB: {
+    case INPUT_ACTION_TYPES.SELECT_OUTPUT_TAB: {
       return {
         ...state,
         outputTab: action.payload,
       };
     }
 
-    case CONVERTER_ACTION_TYPES.REVERSE_TABS: {
+    case INPUT_ACTION_TYPES.REVERSE_TABS: {
       return {
         ...state,
         inputTab: state.outputTab,
@@ -36,14 +36,14 @@ export default (state = initialState, action: ConverterAction) => {
       };
     }
 
-    case CONVERTER_ACTION_TYPES.CHANGE_INPUT: {
+    case INPUT_ACTION_TYPES.CHANGE_INPUT: {
       return {
         ...state,
         input: action.payload,
       };
     }
 
-    case CONVERTER_ACTION_TYPES.CHANGE_OUTPUT: {
+    case INPUT_ACTION_TYPES.CHANGE_OUTPUT: {
       const output = state.input * state.inputExchangeCourse;
 
       return {
@@ -52,14 +52,14 @@ export default (state = initialState, action: ConverterAction) => {
       };
     }
 
-    case CONVERTER_ACTION_TYPES.CHANGE_INPUT_EXCHANGE_COURSE: {
+    case INPUT_ACTION_TYPES.CHANGE_INPUT_EXCHANGE_COURSE: {
       return {
         ...state,
         inputExchangeCourse: action.payload,
       };
     }
 
-    case CONVERTER_ACTION_TYPES.CHANGE_OUTPUT_EXCHANGE_COURSE: {
+    case INPUT_ACTION_TYPES.CHANGE_OUTPUT_EXCHANGE_COURSE: {
       return {
         ...state,
         outputExchangeCourse: action.payload,

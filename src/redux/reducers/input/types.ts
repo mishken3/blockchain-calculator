@@ -1,8 +1,8 @@
 import { CurrenciesEnum } from '../../../types/types';
-import { CONVERTER_ACTION_TYPES } from './action-types';
+import { INPUT_ACTION_TYPES } from './action-types';
 
 /** state **/
-export interface Converter {
+export interface Input {
   inputTab: CurrenciesEnum;
   outputTab: CurrenciesEnum;
 
@@ -14,35 +14,35 @@ export interface Converter {
 
 /** action-creators **/
 export interface SelectInputTabAction {
-  type: CONVERTER_ACTION_TYPES.SELECT_INPUT_TAB;
+  type: INPUT_ACTION_TYPES.SELECT_INPUT_TAB;
   payload: CurrenciesEnum;
 }
 
 export interface SelectOutputTabAction {
-  type: CONVERTER_ACTION_TYPES.SELECT_OUTPUT_TAB;
+  type: INPUT_ACTION_TYPES.SELECT_OUTPUT_TAB;
   payload: CurrenciesEnum;
 }
 
 export interface ReverseTabsAction {
-  type: CONVERTER_ACTION_TYPES.REVERSE_TABS;
+  type: INPUT_ACTION_TYPES.REVERSE_TABS;
 }
 
 export interface ChangeInputAction {
-  type: CONVERTER_ACTION_TYPES.CHANGE_INPUT;
+  type: INPUT_ACTION_TYPES.CHANGE_INPUT;
   payload: number;
 }
 
 export interface ChangeOutputAction {
-  type: CONVERTER_ACTION_TYPES.CHANGE_OUTPUT;
+  type: INPUT_ACTION_TYPES.CHANGE_OUTPUT;
   payload: number;
 }
 
 export interface ChangeInputExchangeAction {
-  type: CONVERTER_ACTION_TYPES.CHANGE_INPUT_EXCHANGE_COURSE;
+  type: INPUT_ACTION_TYPES.CHANGE_INPUT_EXCHANGE_COURSE;
   payload: number;
 }
 export interface ChangeOutputExchangeAction {
-  type: CONVERTER_ACTION_TYPES.CHANGE_OUTPUT_EXCHANGE_COURSE;
+  type: INPUT_ACTION_TYPES.CHANGE_OUTPUT_EXCHANGE_COURSE;
   payload: number;
 }
 

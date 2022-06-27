@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { CurrencyTabs, InputCurrency } from './components';
+import { CurrencyTabs, InputField } from './components';
 import styles from './Input.module.scss';
 import { InputPropsT } from './Input.types';
 
@@ -22,7 +22,7 @@ export const Input: FC<InputPropsT> = ({
         selectedCurrency={selectedCurrency}
       />
 
-      <InputCurrency
+      <InputField
         editable={editable}
         value={value}
         onChange={onChange}
