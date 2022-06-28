@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 
 import { Input, ReverseTabsButton, useInput } from '../../../../components';
 import { CurrenciesData } from '../../../../types/CurrenciesData.types';
+import styles from './ContentConverter.module.scss';
 
 interface ContentConverterProps {
   currenciesData: CurrenciesData;
@@ -21,7 +22,7 @@ export const ContentConverter: FC<ContentConverterProps> = ({ currenciesData }) 
   } = useInput(currenciesData);
 
   return (
-    <>
+    <div className={styles.content}>
       <Input
         title="У меня есть"
         handleOnClick={selectInputTab}
@@ -42,6 +43,6 @@ export const ContentConverter: FC<ContentConverterProps> = ({ currenciesData }) 
         value={inputData.output}
         exchangeCourse={exchangeConversionInputCourse}
       />
-    </>
+    </div>
   );
 };
