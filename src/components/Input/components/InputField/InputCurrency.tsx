@@ -36,9 +36,10 @@ export const InputField: FC<InputFieldProps> = ({
       <input
         type="text"
         value={inputValue}
-        className={styles.input__input}
+        className={styles.input__field}
         onChange={handleOnChange}
       />
+
       <span className={styles.input__course}>{exchangeCourse}</span>
     </div>
   );

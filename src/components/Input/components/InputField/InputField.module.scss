@@ -9,7 +9,7 @@
   flex-direction: column;
   box-sizing: border-box;
 
-  &__input {
+  &__field {
     font-size: 28px;
     font-weight: 700;
     line-height: 36px;
@@ -19,7 +19,6 @@
 
     color: $color__black;
 
-    /** REMOVE DEFAULT BROWSER BEHAVIOR **/
     &,
     &:focus {
       border: none;
