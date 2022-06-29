@@ -2,19 +2,21 @@
 @import '../../../../assets/styles/buttons.scss';
 
 .currencies {
-  width: 100%;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  font-size: 14px;
+  line-height: 22px;
 
   &__title {
-    font-size: 14px;
     font-weight: 500;
-    line-height: 22px;
+    margin: 0;
 
     color: $color__grey__60;
   }
 }
 
-/** CURRENCIES BTNS **/
 .currencies__wrapper {
   @extend .buttons;
 
@@ -24,15 +26,8 @@
 .currencies__item {
   @extend .buttons__button;
 
-  font-size: 14px;
-  line-height: 22px;
-
   background: transparent;
   border: none;
-
-  &:hover {
-    cursor: pointer;
-  }
 
   &_active {
     @extend .buttons__button_selected;
