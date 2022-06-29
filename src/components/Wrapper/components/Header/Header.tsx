@@ -1,28 +1,30 @@
 import cn from 'classnames';
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { logo, profile_photo } from '../../../../assets/icons';
 import styles from './Header.module.scss';
 
+interface GetClassNamesProps {
+  isActive: boolean;
+}
+type GetClassNames = (props: GetClassNamesProps) => string;
+
 export const Header = () => {
-  const isPersonalPage = useLocation().pathname === '/';
+  const getClassNames: GetClassNames = ({ isActive }) =>
+    cn(styles.tabs__item, isActive && styles.tabs__item_selected);
 
   return (
     <div className={styles.header}>
       <img className={styles.logo} src={logo} alt="Blockchain logo" />
 
       <div className={styles.tabs}>
-        <Link
-          className={cn(styles.tabs__item, !isPersonalPage && styles.tabs__item_selected)}
-          to="/converter">
+        <NavLink className={getClassNames} to="/converter">
           Конвертер
-        </Link>
-        <Link
-          className={cn(styles.tabs__item, isPersonalPage && styles.tabs__item_selected)}
-          to="/">
+        </NavLink>
+        <NavLink className={getClassNames} to="/">
           Портфель
-        </Link>
+        </NavLink>
       </div>
 
       <div className={styles.profile}>
