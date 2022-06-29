@@ -1,25 +1,27 @@
 @use '../../assets/styles/constants.scss' as *;
 
 .page {
+  width: 100vw;
+  height: 100vh;
+
   font-family: 'Montserrat', sans-serif;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 24px;
-
-  padding: 40px 240px;
+  & p {
+    margin: 0px;
+  }
 
   &__name {
-    font-family: Montserrat;
     font-size: 32px;
     font-weight: 700;
     line-height: 40px;
-    letter-spacing: 0em;
-    text-align: left;
-
-    margin: 0px;
 
     color: $color__black;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    padding: 40px 240px;
   }
 }
