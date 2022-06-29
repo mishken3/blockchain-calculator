@@ -22,9 +22,6 @@ export const useInputExhchage = (inputData: Input): InputExhchageHook => {
   const [isSellingCoinBalanceLow, setIsSellingCoinBalanceLow] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log('inputField :>> ', inputField);
-    console.log('coinFromBalance :>> ', coinFromBalance);
-
     inputData.input > coinFromBalance
       ? setIsSellingCoinBalanceLow(true)
       : setIsSellingCoinBalanceLow(false);

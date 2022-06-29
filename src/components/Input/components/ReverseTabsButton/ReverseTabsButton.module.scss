@@ -1,14 +1,8 @@
-.arrows {
+.reverse {
+  align-self: center;
+
   width: 41px;
   height: 35px;
-
-  &__wrapper {
-    display: flex;
-    align-items: center;
-
-    position: relative;
-    top: 35px;
-  }
 
   &__button {
     cursor: pointer;
@@ -16,5 +10,20 @@
     outline: none;
     border: none;
     background: none;
+  }
+
+  & img {
+    width: 100%;
+  }
+
+  &__vertical {
+    & img {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__horizontal {
+    position: relative;
+    top: 35px;
   }
 }
