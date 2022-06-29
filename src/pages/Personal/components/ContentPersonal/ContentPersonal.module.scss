@@ -38,7 +38,7 @@
 
 .content {
   display: flex;
-  gap: 84px;
+  gap: 64px;
 
   align-items: center;
 
@@ -57,18 +57,18 @@
       border: none;
       background: none;
 
-      &:hover {
-        color: $color__black;
-      }
-
       & > span {
         font-weight: 500;
-        color: $color__black;
+        color: $color__grey__70;
         opacity: 0.8;
         cursor: pointer;
 
         padding-bottom: 1px;
         border-bottom: 2px solid $color__brown;
+
+        &:hover {
+          color: $color__black;
+        }
       }
     }
   }

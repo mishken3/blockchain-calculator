@@ -4,7 +4,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  gap: 16px;
+
+  height: 100%;
 
   &__button {
     background: none;
@@ -16,13 +18,16 @@
     &:hover {
       color: $color__black;
     }
+    &:disabled {
+      color: $color__black;
+      cursor: default;
+      text-decoration: line-through;
+    }
   }
 
   &__error {
-    color: $color__black;
-  }
+    font-weight: 600;
 
-  & img {
-    transform: rotate(90deg);
+    color: $color__black;
   }
 }
