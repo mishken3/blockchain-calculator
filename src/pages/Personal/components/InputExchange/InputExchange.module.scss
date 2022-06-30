@@ -1,0 +1,33 @@
+@use '../../../../assets/styles/constants.scss' as *;
+
+.exchange {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  height: 100%;
+
+  &__button {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    color: $color__grey__70;
+
+    &:hover {
+      color: $color__black;
+    }
+    &:disabled {
+      color: $color__black;
+      cursor: default;
+      text-decoration: line-through;
+    }
+  }
+
+  &__error {
+    font-weight: 600;
+
+    color: $color__black;
+  }
+}

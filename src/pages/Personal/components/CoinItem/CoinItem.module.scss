@@ -1,0 +1,54 @@
+@use '../../../../assets/styles/constants.scss' as *;
+
+.coin {
+  display: flex;
+  justify-content: space-between;
+
+  min-width: 200px;
+  min-height: 40px;
+
+  &::before {
+    content: '';
+    width: 8px;
+    border-radius: 4px;
+    opacity: 0.8;
+
+    /* TODO CHANGE COLOR LATER FOR EVERY COIN */
+    background-color: coral;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+
+    & > img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__amount {
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    & > p {
+      margin: 0;
+    }
+
+    &_title {
+      font-size: 12px;
+      font-weight: 400;
+
+      color: $color__grey__70;
+    }
+
+    &_number {
+      font-size: 16px;
+      font-weight: 500;
+
+      color: $color__black;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+@use '../../../../assets/styles/constants.scss' as *;
+
+.input {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 16px;
+
+  padding: 16px;
+
+  border: 2px solid $color__grey__50;
+  border-radius: 5px;
+
+  &__field {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 36px;
+
+    color: $color__black;
+
+    &,
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+  }
+
+  &__course {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+
+    color: $color__grey__70;
+  }
+}

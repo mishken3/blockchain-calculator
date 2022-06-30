@@ -1,3 +1,4 @@
+export * from './CoinItem';
 export * from './ContentPersonal';
-export * from './CurrencyAmount';
 export * from './Diagramm';
+export * from './InputExchange';

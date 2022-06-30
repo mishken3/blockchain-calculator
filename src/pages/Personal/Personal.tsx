@@ -1,12 +1,10 @@
 import React, { FC } from 'react';
 
-import { useCurrenciesData, useTypedSelector } from '../../hooks';
-import { ContentPersonal, CurrencyAmount } from './components';
-import { getBeautifyAmount } from './Personal.utils';
+import { ContentPersonal } from './components';
+import { usePersonal } from './usePersonal.hook';
 
 export const PersonalPage: FC = () => {
-  const walletData = useTypedSelector((state) => state.wallet);
-  const { currenciesData, isLoading, isHasError } = useCurrenciesData();
+  const { walletData, currenciesData, isLoading, isHasError, getWalletAmount } = usePersonal();
 
   if (isLoading) {
     return <h1>Загрузка курсов валют...</h1>;
@@ -15,26 +13,13 @@ export const PersonalPage: FC = () => {
     return <h1>Ошибка загрузки валют: перезагрузите страницу.</h1>;
   }
 
-  const currencyAmounts = Object.values(currenciesData).map((currency) => {
-    const coinAmount = currency.price * walletData[currency.name];
-    const beautifyCoinAmount = getBeautifyAmount(coinAmount);
-    return (
-      <CurrencyAmount key={currency.id} coinName={currency.name} coinAmount={beautifyCoinAmount} />
-    );
-  });
+  const walletAmount = getWalletAmount(currenciesData, walletData);
 
-  const getWalletAmount = () => {
-    const walletAmount = Object.values(currenciesData).reduce((amount: number, currency) => {
-      const coinAmount = currency.price * walletData[currency.name];
-      amount += coinAmount;
-
-      return amount;
-    }, 0);
-
-    return getBeautifyAmount(walletAmount);
-  };
-
-  const walletAmount = getWalletAmount();
-
-  return <ContentPersonal walletAmount={walletAmount} currencyAmounts={currencyAmounts} />;
+  return (
+    <ContentPersonal
+      walletAmount={walletAmount}
+      currenciesData={currenciesData}
+      walletData={walletData}
+    />
+  );
 };

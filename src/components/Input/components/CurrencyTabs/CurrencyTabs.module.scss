@@ -1,0 +1,42 @@
+@use '../../../../assets/styles/constants.scss' as *;
+@import '../../../../assets/styles/buttons.scss';
+
+.currencies {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding-top: 16px;
+
+  font-size: 14px;
+  line-height: 22px;
+
+  &__title {
+    font-weight: 500;
+    margin: 0;
+
+    color: $color__grey__60;
+  }
+
+  &__wrapper {
+    @extend .buttons;
+
+    gap: 16px;
+  }
+
+  &__item {
+    @extend .buttons__button;
+
+    background: transparent;
+    border: none;
+
+    &_active {
+      @extend .buttons__button_selected;
+      color: $color__black;
+    }
+  }
+}
+
+.vertical {
+  padding-top: 0px;
+}

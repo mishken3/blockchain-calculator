@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 
 import { useCurrenciesData } from '../../hooks';
-import { Content } from './components';
+import { CurrenciesDataHook } from '../../types/CurrenciesData.types';
+import { ContentConverter } from './components';
 
 export const ConverterPage: FC = () => {
-  const { currenciesData, isLoading, isHasError } = useCurrenciesData();
+  const { currenciesData, isLoading, isHasError }: CurrenciesDataHook = useCurrenciesData();
 
   if (isLoading) {
     return <h1>Загрузка курсов валют...</h1>;
@@ -13,5 +14,5 @@ export const ConverterPage: FC = () => {
     return <h1>Ошибка загрузки валют: перезагрузите страницу.</h1>;
   }
 
-  return <Content currenciesData={currenciesData} />;
+  return <ContentConverter currenciesData={currenciesData} />;
 };

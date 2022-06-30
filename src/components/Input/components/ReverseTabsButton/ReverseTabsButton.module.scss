@@ -1,0 +1,36 @@
+.reverse {
+  align-self: center;
+
+  width: 41px;
+  height: 35px;
+
+  &__button {
+    width: 100%;
+    height: 100%;
+
+    cursor: pointer;
+
+    outline: none;
+    border: none;
+    background: none;
+  }
+
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__vertical {
+    width: 100%;
+    height: 100%;
+
+    & img {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__horizontal {
+    position: relative;
+    top: 35px;
+  }
+}

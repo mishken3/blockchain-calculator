@@ -9,14 +9,15 @@ export const Wrapper: FC = () => {
   const pageName = currentPath === '/' ? 'Портфель' : 'Конвертер';
 
   return (
-    <>
-      <Header />
-      <div className={styles.page}>
-        <p className={styles.page__name}>{pageName}</p>
-        <div className={styles.content}>
-          <Outlet />
-        </div>
+    <div className={styles.page}>
+      <div className={styles.page__header}>
+        <Header />
       </div>
-    </>
+
+      <div className={styles.page__content}>
+        <p className={styles.page__name}>{pageName}</p>
+        <Outlet />
+      </div>
+    </div>
   );
 };
