@@ -6,6 +6,8 @@
   flex-direction: column;
   gap: 8px;
 
+  padding-top: 16px;
+
   font-size: 14px;
   line-height: 22px;
 
@@ -15,22 +17,26 @@
 
     color: $color__grey__60;
   }
-}
 
-.currencies__wrapper {
-  @extend .buttons;
+  &__wrapper {
+    @extend .buttons;
 
-  gap: 16px;
-}
-
-.currencies__item {
-  @extend .buttons__button;
-
-  background: transparent;
-  border: none;
-
-  &_active {
-    @extend .buttons__button_selected;
-    color: $color__black;
+    gap: 16px;
   }
+
+  &__item {
+    @extend .buttons__button;
+
+    background: transparent;
+    border: none;
+
+    &_active {
+      @extend .buttons__button_selected;
+      color: $color__black;
+    }
+  }
+}
+
+.vertical {
+  padding-top: 0px;
 }

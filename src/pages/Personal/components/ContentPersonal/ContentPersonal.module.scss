@@ -38,12 +38,10 @@
 
 .content {
   display: flex;
+  align-items: center;
   gap: 64px;
 
-  align-items: center;
-
-  /* TODO Deal with this hard-code shieeeet */
-  height: 600px;
+  height: 510px;
 
   &__coins {
     display: flex;

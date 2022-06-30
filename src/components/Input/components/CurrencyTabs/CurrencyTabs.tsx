@@ -8,12 +8,19 @@ export interface CurrencyTabsProps {
   title: string;
   selectedCurrency: string;
   handleOnClick: (value: CurrenciesEnum) => void;
+  isHorizontalView?: boolean;
 }
 
-export const CurrencyTabs: FC<CurrencyTabsProps> = ({ title, selectedCurrency, handleOnClick }) => {
+export const CurrencyTabs: FC<CurrencyTabsProps> = ({
+  title,
+  selectedCurrency,
+  handleOnClick,
+  isHorizontalView = true,
+}) => {
   const currencies = [CurrenciesEnum.USD, CurrenciesEnum.ETH, CurrenciesEnum.BTC];
+
   return (
-    <div className={styles.currencies}>
+    <div className={cn(styles.currencies, !isHorizontalView && styles.vertical)}>
       <p className={styles.currencies__title}>{title}</p>
 
       <div className={styles.currencies__wrapper}>

@@ -6,8 +6,10 @@
 
   &__button {
     position: relative;
+    padding: 0;
 
     color: $color__grey__60;
+    font-weight: 500;
 
     text-decoration: none;
     cursor: pointer;

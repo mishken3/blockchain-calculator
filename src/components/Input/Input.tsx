@@ -13,6 +13,8 @@ export const Input: FC<InputPropsT> = ({
   value,
   onChange,
   exchangeCourse,
+
+  isHorizontalView = true,
 }) => {
   return (
     <div className={styles.inputItem}>
@@ -20,6 +22,7 @@ export const Input: FC<InputPropsT> = ({
         title={title}
         handleOnClick={handleOnClick}
         selectedCurrency={selectedCurrency}
+        isHorizontalView={isHorizontalView}
       />
 
       <InputField

@@ -38,6 +38,7 @@ export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
         value={inputData.input}
         onChange={changeInput}
         exchangeCourse={exchangeInputCourse}
+        isHorizontalView={false}
       />
 
       <ReverseTabsButton reverseTabs={reverseTabs} isHorizontalView={false} />
@@ -49,6 +50,7 @@ export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
         editable={false}
         value={inputData.output}
         exchangeCourse={exchangeConversionInputCourse}
+        isHorizontalView={false}
       />
 
       <button
