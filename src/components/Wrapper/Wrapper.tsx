@@ -10,7 +10,9 @@ export const Wrapper: FC = () => {
 
   return (
     <div className={styles.page}>
-      <Header />
+      <div className={styles.page__header}>
+        <Header />
+      </div>
 
       <div className={styles.page__content}>
         <p className={styles.page__name}>{pageName}</p>

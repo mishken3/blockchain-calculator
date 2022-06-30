@@ -2,11 +2,10 @@
 
 .coin {
   display: flex;
-  gap: 8px;
   justify-content: space-between;
 
-  width: 200px;
-  height: 40px;
+  min-width: 250px;
+  min-height: 40px;
 
   &::before {
     content: '';
@@ -14,7 +13,7 @@
     border-radius: 4px;
     opacity: 0.8;
 
-    // TODO CHANGE COLOR LATER FOR EVERY COIN
+    /* TODO CHANGE COLOR LATER FOR EVERY COIN */
     background-color: coral;
   }
 
@@ -29,6 +28,11 @@
   }
 
   &__amount {
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
     & > p {
       margin: 0;
     }
