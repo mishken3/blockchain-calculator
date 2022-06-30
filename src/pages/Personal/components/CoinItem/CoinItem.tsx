@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { CoinsIcons } from '../../../../assets/icons';
-import { CurrenciesEnum } from '../../../../types/types';
+import { CoinsColors, CurrenciesEnum } from '../../../../types/types';
 import styles from './CoinItem.module.scss';
 
 interface CoinItemProps {
@@ -12,7 +12,7 @@ interface CoinItemProps {
 
 export const CoinItem: FC<CoinItemProps> = ({ coinName, coinAmountUSD, coinAmount }) => {
   return (
-    <div className={styles.coin}>
+    <div className={styles.coin} style={{ borderLeftColor: CoinsColors[coinName] }}>
       <div className={styles.coin__icon}>
         <img src={CoinsIcons[coinName]} alt={coinName} />
       </div>

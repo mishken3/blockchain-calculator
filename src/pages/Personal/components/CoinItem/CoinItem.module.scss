@@ -7,15 +7,9 @@
   min-width: 200px;
   min-height: 40px;
 
-  &::before {
-    content: '';
-    width: 8px;
-    border-radius: 4px;
-    opacity: 0.8;
-
-    /* TODO CHANGE COLOR LATER FOR EVERY COIN */
-    background-color: coral;
-  }
+  padding-left: 8px;
+  border-left: 8px solid hsla(28, 100%, 86%, 0.8);
+  border-radius: 4px;
 
   &__icon {
     display: flex;
