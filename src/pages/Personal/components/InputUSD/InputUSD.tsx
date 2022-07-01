@@ -20,7 +20,7 @@ export const InputUSD: FC<InputUSDProps> = ({ useInputData }) => {
         editable={true}
         value={inputData.input}
         onChange={changeInput}
-        exchangeCourse={textAfterInputUSD}
+        textBelowInput={textAfterInputUSD}
       />
 
       <button className={styles.input__button} onClick={increaseWalletUSD}>

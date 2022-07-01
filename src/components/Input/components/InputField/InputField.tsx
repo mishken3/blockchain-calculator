@@ -6,7 +6,7 @@ import { getClearedValue, isMaxLength, isOnlyNumbers } from './InputField.utils'
 export interface InputFieldProps {
   value: number;
   editable: boolean;
-  exchangeCourse?: string;
+  textBelowInput?: string;
 
   onChange?: (value: number) => void;
 }
@@ -14,7 +14,7 @@ export interface InputFieldProps {
 export const InputField: FC<InputFieldProps> = ({
   value,
   editable,
-  exchangeCourse,
+  textBelowInput,
   onChange = null,
 }) => {
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -40,7 +40,7 @@ export const InputField: FC<InputFieldProps> = ({
         onChange={handleOnChange}
       />
 
-      <span className={styles.input__course}>{exchangeCourse}</span>
+      <span className={styles.input__course}>{textBelowInput}</span>
     </div>
   );
 };

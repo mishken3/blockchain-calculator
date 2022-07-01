@@ -36,7 +36,7 @@ export const InputExchange: FC<InputExchangeProps> = ({ useInputData }) => {
         editable
         value={inputData.input}
         onChange={changeInput}
-        exchangeCourse={exchangeInputCourse}
+        textBelowInput={exchangeInputCourse}
         isHorizontalView={false}
       />
 
@@ -48,7 +48,7 @@ export const InputExchange: FC<InputExchangeProps> = ({ useInputData }) => {
         selectedCurrency={inputData.outputTab}
         editable={false}
         value={inputData.output}
-        exchangeCourse={exchangeConversionInputCourse}
+        textBelowInput={exchangeConversionInputCourse}
         isHorizontalView={false}
       />
 
