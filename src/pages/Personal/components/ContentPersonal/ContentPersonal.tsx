@@ -61,10 +61,8 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({ currenciesData }) =>
           </div>
         </div>
 
-        <div className={styles.content__inputs}>
-          {isExchangeOpen && <InputExchange useInputData={useInputData} />}
-          {isUSDBuyOpen && <InputUSD useInputData={useInputData} />}
-        </div>
+        {isExchangeOpen && <InputExchange useInputData={useInputData} />}
+        {isUSDBuyOpen && <InputUSD useInputData={useInputData} />}
       </div>
     </div>
   );

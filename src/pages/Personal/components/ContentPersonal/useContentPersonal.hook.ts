@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useInput } from '../../../../components';
 import { useTypedSelector } from '../../../../hooks';
@@ -18,6 +18,19 @@ export const useContentPersonal = (currenciesData: CurrenciesData) => {
   const handlerSetIsUSDBuyOpen = () => {
     setIsUSDBuyOpen((prevValue) => !prevValue);
   };
+
+  /* shows only one input at the same time */
+  useEffect(() => {
+    if (isExchangeOpen === true) {
+      setIsUSDBuyOpen(false);
+    }
+  }, [isExchangeOpen]);
+
+  useEffect(() => {
+    if (isUSDBuyOpen === true) {
+      setExchangeOpen(false);
+    }
+  }, [isUSDBuyOpen]);
 
   const walletAmount = getWalletAmount(currenciesData, walletData);
 

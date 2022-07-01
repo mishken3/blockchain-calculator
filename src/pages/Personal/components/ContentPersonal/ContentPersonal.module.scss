@@ -75,11 +75,4 @@
       }
     }
   }
-
-  /* TODO SETUP SHOWING ONLY ONE INPUT, NOT BOTH */
-  &__inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
 }
