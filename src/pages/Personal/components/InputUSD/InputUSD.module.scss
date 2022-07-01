@@ -1,0 +1,28 @@
+@use '../../../../assets/styles/constants.scss' as *;
+
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  &__button {
+    width: fit-content;
+    align-self: center;
+
+    border: none;
+    background: none;
+
+    font-weight: 500;
+    color: $color__grey__70;
+    opacity: 0.8;
+    cursor: pointer;
+
+    padding-bottom: 1px;
+    border-bottom: 2px solid $color__brown;
+
+    &:hover {
+      color: $color__black;
+    }
+  }
+}

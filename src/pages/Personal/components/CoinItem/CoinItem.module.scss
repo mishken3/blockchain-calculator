@@ -45,4 +45,16 @@
       color: $color__black;
     }
   }
+
+  &__buy {
+    height: 50%;
+    width: fit-content;
+    align-self: center;
+
+    border: none;
+    outline: none;
+    background: none;
+    color: green;
+    cursor: pointer;
+  }
 }

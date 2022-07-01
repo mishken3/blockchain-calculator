@@ -6,5 +6,16 @@ export const useContentPersonal = () => {
     setExchangeOpen((pervIsExchangeOpen) => !pervIsExchangeOpen);
   };
 
-  return { isExchangeOpen, handlerSetExchangeOpen };
+  const [isUSDBuyOpen, setIsUSDBuyOpen] = useState(false);
+  const handlerSetIsUSDBuyOpen = () => {
+    setIsUSDBuyOpen((prevValue) => !prevValue);
+  };
+
+  return {
+    isExchangeOpen,
+    handlerSetExchangeOpen,
+
+    isUSDBuyOpen,
+    handlerSetIsUSDBuyOpen,
+  };
 };

@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { Wallet } from '../../../../redux/reducers/wallet/types';
 import { CurrenciesData } from '../../../../types/CurrenciesData.types';
 import { getBeautifyAmount } from '../../Personal.utils';
-import { CoinItem, Diagramm, InputExchange } from '../index';
+import { CoinItem, Diagramm, InputExchange, InputUSD } from '../index';
 import styles from './ContentPersonal.module.scss';
 import { useContentPersonal } from './useContentPersonal.hook';
 
@@ -18,7 +18,13 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({
   walletData,
   currenciesData,
 }) => {
-  const { isExchangeOpen, handlerSetExchangeOpen } = useContentPersonal();
+  const {
+    isExchangeOpen,
+    handlerSetExchangeOpen,
+
+    isUSDBuyOpen,
+    handlerSetIsUSDBuyOpen,
+  } = useContentPersonal();
 
   const CoinItems = Object.values(currenciesData).map((currency) => {
     const coinAmount = walletData[currency.name];
@@ -29,6 +35,7 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({
         coinName={currency.name}
         coinAmountUSD={coinAmountUSD}
         coinAmount={coinAmount}
+        handlerSetIsUSDBuyOpen={handlerSetIsUSDBuyOpen}
       />
     );
   });
@@ -53,6 +60,7 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({
         </div>
 
         {isExchangeOpen && <InputExchange currenciesData={currenciesData} />}
+        {isUSDBuyOpen && <InputUSD currenciesData={currenciesData} />}
       </div>
     </div>
   );

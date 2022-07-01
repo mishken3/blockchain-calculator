@@ -6,7 +6,7 @@ import { getClearedValue, isMaxLength, isOnlyNumbers } from './InputField.utils'
 export interface InputFieldProps {
   value: number;
   editable: boolean;
-  exchangeCourse: string;
+  exchangeCourse?: string;
 
   onChange?: (value: number) => void;
 }
