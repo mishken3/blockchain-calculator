@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
+import { useCurrenciesData } from '../../hooks';
 import { ContentPersonal } from './components';
-import { usePersonal } from './usePersonal.hook';
 
 export const PersonalPage: FC = () => {
-  const { walletData, currenciesData, isLoading, isHasError, getWalletAmount } = usePersonal();
+  const { currenciesData, isLoading, isHasError } = useCurrenciesData();
 
   if (isLoading) {
     return <h1>Загрузка курсов валют...</h1>;
@@ -13,13 +13,5 @@ export const PersonalPage: FC = () => {
     return <h1>Ошибка загрузки валют: перезагрузите страницу.</h1>;
   }
 
-  const walletAmount = getWalletAmount(currenciesData, walletData);
-
-  return (
-    <ContentPersonal
-      walletAmount={walletAmount}
-      currenciesData={currenciesData}
-      walletData={walletData}
-    />
-  );
+  return <ContentPersonal currenciesData={currenciesData} />;
 };

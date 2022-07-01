@@ -6,7 +6,7 @@ import styles from './CoinItem.module.scss';
 
 interface CoinItemProps {
   coinName: CurrenciesEnum;
-  coinAmount: number;
+  coinAmount: string;
   coinAmountUSD: string;
   handlerSetIsUSDBuyOpen: () => void;
 }

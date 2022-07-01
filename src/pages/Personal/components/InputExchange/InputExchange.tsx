@@ -1,15 +1,14 @@
 import React, { FC } from 'react';
 
-import { Input, ReverseTabsButton, useInput } from '../../../../components';
-import { CurrenciesData } from '../../../../types/CurrenciesData.types';
+import { Input, InputDataHook, ReverseTabsButton } from '../../../../components';
 import styles from './InputExchange.module.scss';
 import { useInputExhchage } from './useInputExchange.hook';
 
 interface InputExchangeProps {
-  currenciesData: CurrenciesData;
+  useInputData: InputDataHook;
 }
 
-export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
+export const InputExchange: FC<InputExchangeProps> = ({ useInputData }) => {
   const {
     exchangeInputCourse,
     exchangeConversionInputCourse,
@@ -20,9 +19,9 @@ export const InputExchange: FC<InputExchangeProps> = ({ currenciesData }) => {
     selectOutputTab,
     reverseTabs,
     changeInput,
-  } = useInput(currenciesData);
+  } = useInputData;
 
-  const { exchangeAction, isSellingCoinBalanceLow } = useInputExhchage(inputData);
+  const { isSellingCoinBalanceLow, exchangeAction } = useInputExhchage(inputData);
 
   const handleExchangeAction = (): void => {
     exchangeAction(inputData);

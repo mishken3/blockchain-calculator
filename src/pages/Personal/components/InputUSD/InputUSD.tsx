@@ -1,18 +1,18 @@
 import React, { FC } from 'react';
 
-import { InputField, useInput } from '../../../../components';
-import { CurrenciesData } from '../../../../types/CurrenciesData.types';
+import { InputDataHook, InputField } from '../../../../components';
+import { getBeautifyAmount } from '../../Personal.utils';
 import { useInputUSD } from './InputUSD.hook';
 import styles from './InputUSD.module.scss';
 
 interface InputUSDProps {
-  currenciesData: CurrenciesData;
+  useInputData: InputDataHook;
 }
 
-export const InputUSD: FC<InputUSDProps> = ({ currenciesData }) => {
-  const { inputData, changeInput } = useInput(currenciesData);
+export const InputUSD: FC<InputUSDProps> = ({ useInputData }) => {
+  const { inputData, changeInput } = useInputData;
   const { increaseWalletUSD } = useInputUSD(inputData);
-  const textBelow = `Внести на счёт ${inputData.input}$ ?`;
+  const textAfterInputUSD = `Внести на счёт ${getBeautifyAmount(inputData.input)}$ ?`;
 
   return (
     <div className={styles.input}>
@@ -20,11 +20,11 @@ export const InputUSD: FC<InputUSDProps> = ({ currenciesData }) => {
         editable={true}
         value={inputData.input}
         onChange={changeInput}
-        exchangeCourse={textBelow}
+        exchangeCourse={textAfterInputUSD}
       />
 
       <button className={styles.input__button} onClick={increaseWalletUSD}>
-        Buy
+        Купить
       </button>
     </div>
   );
