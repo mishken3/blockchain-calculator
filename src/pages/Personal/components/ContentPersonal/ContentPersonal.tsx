@@ -33,7 +33,6 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({ currenciesData }) =>
         coinName={currency.name}
         coinAmountUSD={coinAmountUSD}
         coinAmount={coinAmount}
-        handlerSetIsUSDBuyOpen={handlerSetIsUSDBuyOpen}
       />
     );
   });
@@ -52,9 +51,14 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({ currenciesData }) =>
 
         <div className={styles.content__coins}>
           {CoinItems}
-          <button className={styles.content__coins_button} onClick={handlerSetExchangeOpen}>
-            <span>Обменять</span>
-          </button>
+          <div className={styles.content__buttons}>
+            <button className={styles.content__buttons_button} onClick={handlerSetIsUSDBuyOpen}>
+              <span>Купить</span>
+            </button>
+            <button className={styles.content__buttons_button} onClick={handlerSetExchangeOpen}>
+              <span>Обменять</span>
+            </button>
+          </div>
         </div>
 
         <div className={styles.content__inputs}>

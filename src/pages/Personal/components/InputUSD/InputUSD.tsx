@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 import { InputDataHook, InputField } from '../../../../components';
+import { CurrenciesEnum } from '../../../../types/types';
 import { getBeautifyAmount } from '../../Personal.utils';
 import { useInputUSD } from './InputUSD.hook';
 import styles from './InputUSD.module.scss';
@@ -24,7 +25,7 @@ export const InputUSD: FC<InputUSDProps> = ({ useInputData }) => {
       />
 
       <button className={styles.input__button} onClick={increaseWalletUSD}>
-        Купить
+        Приобрести {CurrenciesEnum.USD}
       </button>
     </div>
   );

@@ -8,16 +8,9 @@ interface CoinItemProps {
   coinName: CurrenciesEnum;
   coinAmount: string;
   coinAmountUSD: string;
-  handlerSetIsUSDBuyOpen: () => void;
 }
 
-export const CoinItem: FC<CoinItemProps> = ({
-  coinName,
-  coinAmountUSD,
-  coinAmount,
-
-  handlerSetIsUSDBuyOpen,
-}) => {
+export const CoinItem: FC<CoinItemProps> = ({ coinName, coinAmountUSD, coinAmount }) => {
   return (
     <div className={styles.coin} style={{ borderLeftColor: CoinsColors[coinName] }}>
       <div className={styles.coin__icon}>
@@ -33,12 +26,6 @@ export const CoinItem: FC<CoinItemProps> = ({
           </p>
         )}
       </div>
-
-      {coinName === CurrenciesEnum.USD && (
-        <button onClick={handlerSetIsUSDBuyOpen} className={styles.coin__buy}>
-          $
-        </button>
-      )}
     </div>
   );
 };
