@@ -47,7 +47,7 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({ currenciesData }) =>
       </div>
 
       <div className={styles.content}>
-        <Diagramm walletAmount={walletAmount} />
+        <Diagramm walletAmount={walletAmount} walletData={walletData} />
 
         <div className={styles.content__coins}>
           {CoinItems}

@@ -1,17 +1,35 @@
-import React, { FC } from 'react';
+import 'chart.js/auto';
 
+import React, { FC } from 'react';
+import { Doughnut } from 'react-chartjs-2';
+
+import { Wallet } from '../../../../redux/reducers/wallet/types';
+import { CoinsColors, CurrenciesEnum } from '../../../../types/types';
 import styles from './Diagramm.module.scss';
 
 interface DiagrammProps {
   walletAmount: string;
+  walletData: Wallet;
 }
 
-export const Diagramm: FC<DiagrammProps> = ({ walletAmount }) => {
+export const Diagramm: FC<DiagrammProps> = ({ walletAmount, walletData }) => {
+  /* TODO use walletAmount in center */
+  const data = {
+    labels: [CurrenciesEnum.BTC, CurrenciesEnum.ETH, CurrenciesEnum.USD],
+    datasets: [
+      {
+        label: 'Balance amount',
+        data: [walletData.BTC, walletData.ETH, walletData.USD],
+        backgroundColor: [CoinsColors.BTC, CoinsColors.ETH, CoinsColors.USD],
+        borderColor: [CoinsColors.BTC, CoinsColors.ETH, CoinsColors.USD],
+        borderWidth: 1,
+      },
+    ],
+  };
+
   return (
     <div className={styles.diagramm}>
-      <p className={styles.diagramm__balance}>
-        {walletAmount} <span className={styles.diagramm__balance_currency}>USD</span>
-      </p>
+      <Doughnut data={data} />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useInput } from '../../../../components';
 import { useTypedSelector } from '../../../../hooks';
 import { CurrenciesData } from '../../../../types/CurrenciesData.types';
+import { CurrenciesEnum } from '../../../../types/types';
 import { getWalletAmount } from '../../Personal.utils';
 
 export const useContentPersonal = (currenciesData: CurrenciesData) => {
@@ -33,6 +34,18 @@ export const useContentPersonal = (currenciesData: CurrenciesData) => {
   }, [isUSDBuyOpen]);
 
   const walletAmount = getWalletAmount(currenciesData, walletData);
+
+  /* TODO walletData2USD
+   const walletData2USD = Object.keys(currenciesData).reduce(
+    (result, key as CurrenciesEnum[]) => ({
+      ...result,
+      [CurrenciesEnum[key]]: {
+        [key]: currenciesData[key].price * walletData[key],
+      },
+    }),
+    {} as Wallet,
+  );
+  */
 
   return {
     walletData,
