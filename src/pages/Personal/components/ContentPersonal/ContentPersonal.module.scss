@@ -47,6 +47,11 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-around;
 
     &_button {
       width: fit-content;

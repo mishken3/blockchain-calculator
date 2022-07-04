@@ -12,7 +12,7 @@ export const Input: FC<InputPropsT> = ({
   editable,
   value,
   onChange,
-  exchangeCourse,
+  textBelowInput,
 
   isHorizontalView = true,
 }) => {
@@ -29,7 +29,7 @@ export const Input: FC<InputPropsT> = ({
         editable={editable}
         value={value}
         onChange={onChange}
-        exchangeCourse={exchangeCourse}
+        textBelowInput={textBelowInput}
       />
     </div>
   );

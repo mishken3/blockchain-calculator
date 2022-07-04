@@ -30,7 +30,7 @@ export const ContentConverter: FC<ContentConverterProps> = ({ currenciesData }) 
         editable
         value={inputData.input}
         onChange={changeInput}
-        exchangeCourse={exchangeInputCourse}
+        textBelowInput={exchangeInputCourse}
       />
 
       <ReverseTabsButton reverseTabs={reverseTabs} />
@@ -41,7 +41,7 @@ export const ContentConverter: FC<ContentConverterProps> = ({ currenciesData }) 
         selectedCurrency={inputData.outputTab}
         editable={false}
         value={inputData.output}
-        exchangeCourse={exchangeConversionInputCourse}
+        textBelowInput={exchangeConversionInputCourse}
       />
     </div>
   );

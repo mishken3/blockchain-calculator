@@ -1,27 +1,31 @@
 import React, { FC } from 'react';
 
-import { Wallet } from '../../../../redux/reducers/wallet/types';
 import { CurrenciesData } from '../../../../types/CurrenciesData.types';
 import { getBeautifyAmount } from '../../Personal.utils';
-import { CoinItem, Diagramm, InputExchange } from '../index';
+import { CoinItem, Diagramm, InputExchange, InputUSD } from '../index';
 import styles from './ContentPersonal.module.scss';
 import { useContentPersonal } from './useContentPersonal.hook';
 
 interface ContentPersonalProps {
-  walletAmount: string;
-  walletData: Wallet;
   currenciesData: CurrenciesData;
 }
 
-export const ContentPersonal: FC<ContentPersonalProps> = ({
-  walletAmount,
-  walletData,
-  currenciesData,
-}) => {
-  const { isExchangeOpen, handlerSetExchangeOpen } = useContentPersonal();
+export const ContentPersonal: FC<ContentPersonalProps> = ({ currenciesData }) => {
+  const {
+    walletData,
+    useInputData,
+
+    isExchangeOpen,
+    handlerSetExchangeOpen,
+
+    isUSDBuyOpen,
+    handlerSetIsUSDBuyOpen,
+
+    walletAmount,
+  } = useContentPersonal(currenciesData);
 
   const CoinItems = Object.values(currenciesData).map((currency) => {
-    const coinAmount = walletData[currency.name];
+    const coinAmount = getBeautifyAmount(walletData[currency.name], 4);
     const coinAmountUSD = getBeautifyAmount(currency.price * walletData[currency.name]);
     return (
       <CoinItem
@@ -47,12 +51,18 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({
 
         <div className={styles.content__coins}>
           {CoinItems}
-          <button className={styles.content__coins_button} onClick={handlerSetExchangeOpen}>
-            <span>Обменять</span>
-          </button>
+          <div className={styles.content__buttons}>
+            <button className={styles.content__buttons_button} onClick={handlerSetIsUSDBuyOpen}>
+              <span>Купить</span>
+            </button>
+            <button className={styles.content__buttons_button} onClick={handlerSetExchangeOpen}>
+              <span>Обменять</span>
+            </button>
+          </div>
         </div>
 
-        {isExchangeOpen && <InputExchange currenciesData={currenciesData} />}
+        {isExchangeOpen && <InputExchange useInputData={useInputData} />}
+        {isUSDBuyOpen && <InputUSD useInputData={useInputData} />}
       </div>
     </div>
   );
