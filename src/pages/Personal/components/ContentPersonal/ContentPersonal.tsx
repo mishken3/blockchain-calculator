@@ -22,6 +22,7 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({ currenciesData }) =>
     handlerSetIsUSDBuyOpen,
 
     walletAmount,
+    walletData2USD,
   } = useContentPersonal(currenciesData);
 
   const CoinItems = Object.values(currenciesData).map((currency) => {
@@ -47,7 +48,11 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({ currenciesData }) =>
       </div>
 
       <div className={styles.content}>
-        <Diagramm walletAmount={walletAmount} walletData={walletData} />
+        <Diagramm
+          walletAmount={walletAmount}
+          walletData={walletData}
+          walletData2USD={walletData2USD}
+        />
 
         <div className={styles.content__coins}>
           {CoinItems}

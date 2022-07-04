@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { useInput } from '../../../../components';
 import { useTypedSelector } from '../../../../hooks';
+import { Wallet } from '../../../../redux/reducers/wallet/types';
 import { CurrenciesData } from '../../../../types/CurrenciesData.types';
 import { CurrenciesEnum } from '../../../../types/types';
 import { getWalletAmount } from '../../Personal.utils';
@@ -35,17 +36,16 @@ export const useContentPersonal = (currenciesData: CurrenciesData) => {
 
   const walletAmount = getWalletAmount(currenciesData, walletData);
 
-  /* TODO walletData2USD
-   const walletData2USD = Object.keys(currenciesData).reduce(
-    (result, key as CurrenciesEnum[]) => ({
+  /* TODO walletData2USD */
+  /*
+  const walletData2USD = Object.keys(currenciesData).reduce<Wallet2USD>((result, key) => {
+    return {
       ...result,
-      [CurrenciesEnum[key]]: {
-        [key]: currenciesData[key].price * walletData[key],
-      },
-    }),
-    {} as Wallet,
-  );
-  */
+      [CurrenciesEnum[key]]: currenciesData[key].price * walletData[key],
+    };
+  }, {} as Wallet);
+ */
+  const walletData2USD = 'walletData2USD';
 
   return {
     walletData,
@@ -58,5 +58,6 @@ export const useContentPersonal = (currenciesData: CurrenciesData) => {
     handlerSetIsUSDBuyOpen,
 
     walletAmount,
+    walletData2USD,
   };
 };

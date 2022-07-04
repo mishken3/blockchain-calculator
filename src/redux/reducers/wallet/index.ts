@@ -3,9 +3,9 @@ import { WALLET_ACTION_TYPES } from './action-types';
 import { Wallet, WalletAction } from './types';
 
 const initialState: Wallet = {
-  [CurrenciesEnum.BTC]: 0.0035,
-  [CurrenciesEnum.ETH]: 3,
-  [CurrenciesEnum.USD]: 20_000,
+  [CurrenciesEnum.BTC]: 2,
+  [CurrenciesEnum.ETH]: 50,
+  [CurrenciesEnum.USD]: 200_000,
 };
 
 export default (state = initialState, action: WalletAction) => {
