@@ -1,0 +1,18 @@
+.chart {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  justify-content: center;
+
+  &__dates {
+    display: flex;
+
+    justify-content: space-between;
+
+    &_days {
+      display: flex;
+      gap: 16px;
+    }
+  }
+}
