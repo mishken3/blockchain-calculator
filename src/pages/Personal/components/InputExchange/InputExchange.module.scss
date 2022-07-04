@@ -9,11 +9,19 @@
   height: 100%;
 
   &__button {
-    background: none;
+    width: fit-content;
+    align-self: center;
+
     border: none;
+    background: none;
+
+    font-weight: 500;
+    color: $color__grey__70;
+    opacity: 0.8;
     cursor: pointer;
 
-    color: $color__grey__70;
+    padding-bottom: 1px;
+    border-bottom: 2px solid $color__brown;
 
     &:hover {
       color: $color__black;
