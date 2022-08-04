@@ -10,12 +10,10 @@ import styles from './Diagramm.module.scss';
 interface DiagrammProps {
   walletAmount: string;
   walletData: Wallet;
-  walletData2USD: string;
+  walletData2USD: Wallet;
 }
 
 export const Diagramm: FC<DiagrammProps> = ({ walletAmount, walletData, walletData2USD }) => {
-  /* TODO set all to normal obj walletData2USD */
-
   const data = {
     labels: [CurrenciesEnum.BTC, CurrenciesEnum.ETH, CurrenciesEnum.USD],
     datasets: [
