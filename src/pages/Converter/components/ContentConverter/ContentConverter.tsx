@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 
 import { Input, ReverseTabsButton, useInput } from '../../../../components';
 import { CurrenciesData } from '../../../../types/CurrenciesData.types';
@@ -21,6 +21,11 @@ export const ContentConverter: FC<ContentConverterProps> = ({ currenciesData }) 
     reverseTabs,
     changeInput,
   } = useInput(currenciesData);
+
+  const [isChartOpen, setIsChartOpen] = useState(false);
+  const handlerSetIsChartOpen = () => {
+    setIsChartOpen((prevState) => !prevState);
+  };
 
   return (
     <div className={styles.content}>
@@ -48,7 +53,9 @@ export const ContentConverter: FC<ContentConverterProps> = ({ currenciesData }) 
       </div>
 
       <div className={styles.content__chart}>
-        <LineChart />
+        <button onClick={handlerSetIsChartOpen}>Show graphics (WIP)</button>
+
+        {isChartOpen && <LineChart />}
       </div>
     </div>
   );
