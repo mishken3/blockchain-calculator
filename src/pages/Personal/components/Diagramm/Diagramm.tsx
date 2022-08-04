@@ -1,5 +1,3 @@
-import 'chart.js/auto';
-
 import React, { FC } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
@@ -8,30 +6,32 @@ import { CoinsColors, CurrenciesEnum } from '../../../../types/types';
 import styles from './Diagramm.module.scss';
 
 interface DiagrammProps {
-  walletAmount: string;
-  walletData: Wallet;
   walletData2USD: Wallet;
 }
 
-export const Diagramm: FC<DiagrammProps> = ({ walletAmount, walletData, walletData2USD }) => {
-  const data = {
-    labels: [CurrenciesEnum.BTC, CurrenciesEnum.ETH, CurrenciesEnum.USD],
+export const Diagramm: FC<DiagrammProps> = ({ walletData2USD }) => {
+  /* TODO use walletAmount in the center, mb in react-chartjs-2 its impossible */
+
+  const walletCurrencies = Object.keys(walletData2USD) as Array<keyof typeof CurrenciesEnum>;
+
+  const chartData = {
+    labels: walletCurrencies,
     datasets: [
       {
-        label: 'Balance amount',
-        /* TODO Replace  hardcode walletData2USD */
-        data: [39_486.87, 55_546.16, 200_000],
-        backgroundColor: [CoinsColors.BTC, CoinsColors.ETH, CoinsColors.USD],
-        borderColor: [CoinsColors.BTC, CoinsColors.ETH, CoinsColors.USD],
+        label: 'Balance amount chart',
+        data: walletCurrencies.map((key) => walletData2USD[key]),
+        backgroundColor: walletCurrencies.map((currency) => CoinsColors[currency]),
+        borderColor: walletCurrencies.map((currency) => CoinsColors[currency]),
         borderWidth: 1,
         hoverOffset: 3,
+        cutout: '75%',
       },
     ],
   };
 
   return (
     <div className={styles.diagramm}>
-      <Doughnut data={data} />
+      <Doughnut data={chartData} />
     </div>
   );
 };
