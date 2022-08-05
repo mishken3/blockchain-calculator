@@ -3,25 +3,49 @@ import 'chart.js/auto';
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-import { CurrenciesEnum } from '../../../../types/types';
+import { ChartsDataHook, useChartsData, useTypedSelector } from '../../../../hooks';
+import { CoinsColors, CurrenciesEnum } from '../../../../types/types';
 import styles from './LineChart.module.scss';
 
 export const LineChart = () => {
-  const labels = [
-    '7:00',
-    '8:00',
-    '9:00',
-    '10:00',
-    '11:00',
-    '12:00',
-    '13:00',
-    '14:00',
-    '15:00',
-    '16:00',
-    '18:00',
-    '18:00',
-    '19:00',
-  ];
+  const currentSelectedInputCurrencyTab = useTypedSelector((store) => store.input.inputTab);
+  const currentSelectedOutputCurrencyTab = useTypedSelector((store) => store.input.outputTab);
+
+  const { chartsData, isLoading, isHasError }: ChartsDataHook = useChartsData();
+
+  if (isLoading) {
+    return <h1>Загрузка курсов валют...</h1>;
+  }
+  if (isHasError || !chartsData) {
+    return <h1>Ошибка загрузки валют: перезагрузите страницу.</h1>;
+  }
+
+  console.log('chartsData :>> ', chartsData);
+
+  const datesForLabels = chartsData.map((dayData) => {
+    const months = [
+      'Январь',
+      'Февраль',
+      'Март',
+      'Апрель',
+      'Май',
+      'Июнь',
+      'Июль',
+      'Август',
+      'Сентябрь',
+      'Октябрь',
+      'Ноябрь',
+      'Декабрь',
+    ];
+
+    const day = new Date(dayData.time_open).getDate();
+
+    const month = months[new Date(dayData.time_open).getMonth()];
+
+    return `${day} ${month}`;
+  });
+
+  const dayPrice = chartsData.map((dayData) => dayData.rate_open);
 
   /* TODO
   useEffect -> selectedTab = shown coin on graphic
@@ -30,13 +54,19 @@ export const LineChart = () => {
   */
 
   const data = {
-    labels,
+    labels: datesForLabels,
     datasets: [
       {
-        label: CurrenciesEnum.BTC,
-        data: [300, 100, 400, -200, -200, -200, -200, -200, -200, -200, -200, -200, 300, 400, 100],
-        borderColor: '#BF9F86',
-        backgroundColor: '#BF9F86',
+        label: CurrenciesEnum[currentSelectedInputCurrencyTab],
+        data: dayPrice,
+        borderColor: CoinsColors[currentSelectedInputCurrencyTab],
+        backgroundColor: CoinsColors[currentSelectedInputCurrencyTab],
+      },
+      {
+        label: CurrenciesEnum[currentSelectedOutputCurrencyTab],
+        data: dayPrice,
+        borderColor: CoinsColors[currentSelectedOutputCurrencyTab],
+        backgroundColor: CoinsColors[currentSelectedOutputCurrencyTab],
       },
     ],
   };
