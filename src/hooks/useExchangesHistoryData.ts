@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { ExchangesData, ExchangesHistoryDataResponse } from '../types/ChartsData.types';
+import { ExchangesHistoryDataResponse } from '../types/ChartsData.types';
 import { CurrenciesEnum } from '../types/types';
 import { useRequest } from './useRequest';
 
@@ -12,6 +12,7 @@ export const useExchangesHistoryData = () => {
     date.setMonth(date.getMonth() - numOfMonths);
     return date;
   };
+
   /* TODO: PLACEHOLDER DATA, ALL WILL COME FROM PROPS */
 
   const selectedInputTab = CurrenciesEnum.BTC;
@@ -24,7 +25,7 @@ export const useExchangesHistoryData = () => {
 
   /* PLACEHOLDER DATA, ALL WILL COME FROM PROPS */
 
-  const [exchangesData, setExchangesData] = useState<ExchangesData | null>(null);
+  const [exchangesData, setExchangesData] = useState<ExchangesHistoryDataResponse | null>(null);
   const { data, isLoading, isHasError } = useRequest<ExchangesHistoryDataResponse>(
     `https://rest.coinapi.io/v1/exchangerate/${selectedInputTab}/${selectedOutputTab}/history`,
     {
@@ -38,12 +39,8 @@ export const useExchangesHistoryData = () => {
     [],
   );
 
-  console.log('data :>> ', data);
-
   useEffect(() => {
-    if (data) {
-      const test = data.data.reduce<ExchangesData>((acc, dayHistory) => {}, {});
-    }
+    setExchangesData(data);
   }, [data]);
 
   return { exchangesData, isLoading, isHasError };
