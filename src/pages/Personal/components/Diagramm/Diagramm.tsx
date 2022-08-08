@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
 import { Wallet } from '../../../../redux/reducers/wallet/types';
-import { CoinsColors, CurrenciesEnum } from '../../../../types/types';
+import { CoinsColors, CurrenciesEnum } from '../../../../types';
 import styles from './Diagramm.module.scss';
 
 interface DiagrammProps {

@@ -1,4 +1,4 @@
-import { CurrenciesEnum } from './types';
+import { CurrenciesEnum } from './globalTypes.types';
 
 /** REQUEST **/
 export interface CurrencyData {

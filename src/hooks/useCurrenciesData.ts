@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { CurrenciesData, CurrenciesDataResponse } from '../types/CurrenciesData.types';
-import { CurrenciesEnum } from '../types/types';
+import { CurrenciesData, CurrenciesDataResponse, CurrenciesEnum } from '../types';
 import { useRequest } from './useRequest';
 
 export const useCurrenciesData = () => {

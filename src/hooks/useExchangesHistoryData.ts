@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { ExchangesHistoryDataResponse } from '../types/ExchangesHistoryData.types';
-import { CurrenciesEnum } from '../types/types';
+import { CurrenciesEnum, ExchangesHistoryDataResponse } from '../types';
 import { subtractMonths } from '../utils';
 import { useRequest } from './useRequest';
 

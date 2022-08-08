@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import React, { FC } from 'react';
 
-import { CurrenciesEnum } from '../../../../types/types';
+import { CurrenciesEnum } from '../../../../types';
 import styles from './CurrencyTabs.module.scss';
 
 export interface CurrencyTabsProps {

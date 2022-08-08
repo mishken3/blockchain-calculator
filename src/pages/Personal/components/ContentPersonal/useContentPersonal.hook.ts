@@ -3,8 +3,7 @@ import { useEffect, useState } from 'react';
 import { useInput } from '../../../../components';
 import { useTypedSelector } from '../../../../hooks';
 import { Wallet } from '../../../../redux/reducers/wallet/types';
-import { CurrenciesData } from '../../../../types/CurrenciesData.types';
-import { CurrenciesEnum } from '../../../../types/types';
+import { CurrenciesData, CurrenciesEnum } from '../../../../types';
 import { getWalletAmount } from '../../Personal.utils';
 
 export const useContentPersonal = (currenciesData: CurrenciesData) => {

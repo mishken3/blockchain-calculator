@@ -4,8 +4,7 @@ import React, { FC } from 'react';
 import { Line } from 'react-chartjs-2';
 
 import { useExchangesHistoryData, useTypedSelector } from '../../../../hooks';
-import { ExchangesHistoryDataHook } from '../../../../types/ExchangesHistoryData.types';
-import { CoinsColors, CurrenciesEnum } from '../../../../types/types';
+import { CoinsColors, CurrenciesEnum, ExchangesHistoryDataHook } from '../../../../types';
 import styles from './LineChart.module.scss';
 
 export const LineChart: FC = () => {
