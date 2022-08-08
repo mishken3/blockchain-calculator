@@ -3,7 +3,6 @@
 @import '../../../../assets/styles/buttons.scss';
 
 .header {
-  font-family: 'Montserrat', sans-serif;
   background: $color__black;
 
   padding: 12px 40px;
@@ -56,11 +55,8 @@
   &__name {
     height: 22px;
 
-    font-family: 'Montserrat';
-    font-style: normal;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 0.9rem;
 
     color: $color__white;
   }
