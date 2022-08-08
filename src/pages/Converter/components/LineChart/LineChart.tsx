@@ -1,9 +1,8 @@
-import 'chart.js/auto';
-
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-import { ChartsDataHook, useChartsData, useTypedSelector } from '../../../../hooks';
+import { useExchangesHistoryData, useTypedSelector } from '../../../../hooks';
+import { ExchangesDataHook } from '../../../../types/ChartsData.types';
 import { CoinsColors, CurrenciesEnum } from '../../../../types/types';
 import styles from './LineChart.module.scss';
 
@@ -11,18 +10,18 @@ export const LineChart = () => {
   const currentSelectedInputCurrencyTab = useTypedSelector((store) => store.input.inputTab);
   const currentSelectedOutputCurrencyTab = useTypedSelector((store) => store.input.outputTab);
 
-  const { chartsData, isLoading, isHasError }: ChartsDataHook = useChartsData();
+  const { exchangesData, isLoading, isHasError }: ExchangesDataHook = useExchangesHistoryData();
 
   if (isLoading) {
     return <h1>Загрузка курсов валют...</h1>;
   }
-  if (isHasError || !chartsData) {
+  if (isHasError || !exchangesData) {
     return <h1>Ошибка загрузки валют: перезагрузите страницу.</h1>;
   }
 
-  console.log('chartsData :>> ', chartsData);
+  console.log('exchangesData :>> ', exchangesData);
 
-  const datesForLabels = chartsData.map((dayData) => {
+  const datesForLabels = exchangesData.map((dayData) => {
     const months = [
       'Январь',
       'Февраль',
@@ -45,7 +44,7 @@ export const LineChart = () => {
     return `${day} ${month}`;
   });
 
-  const dayPrice = chartsData.map((dayData) => dayData.rate_open);
+  const dayPrice = exchangesData.map((dayData) => dayData.rate_open);
 
   /* TODO
   useEffect -> selectedTab = shown coin on graphic

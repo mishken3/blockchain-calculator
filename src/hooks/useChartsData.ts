@@ -1,30 +1,10 @@
 import { useEffect, useState } from 'react';
 
+import { ExchangesData, ExchangesHistoryDataResponse } from '../types/ChartsData.types';
 import { CurrenciesEnum } from '../types/types';
 import { useRequest } from './useRequest';
 
-export interface ChartsDataHook {
-  chartsData: ChartsData[] | null;
-  isLoading: boolean;
-  isHasError: boolean;
-}
-
-interface ChartsData {
-  rate_close: number;
-  rate_high: number;
-  rate_low: number;
-  rate_open: number;
-  time_close: string;
-  time_open: string;
-  time_period_end: string;
-  time_period_start: string;
-}
-
-interface ChartsDataResponse {
-  data: ChartsData[];
-}
-
-export const useChartsData = () => {
+export const useExchangesHistoryData = () => {
   const APIKey = '90509B00-FF7F-47F2-AC69-A5C82CAD7DA1';
   const tempAPIKey = '698594B8-B832-415F-8990-C87178EE0EE7';
 
@@ -44,8 +24,8 @@ export const useChartsData = () => {
 
   /* PLACEHOLDER DATA, ALL WILL COME FROM PROPS */
 
-  const [chartsData, setChartsData] = useState<ChartsData | null>(null);
-  const { data, isLoading, isHasError } = useRequest<ChartsDataResponse>(
+  const [exchangesData, setExchangesData] = useState<ExchangesData | null>(null);
+  const { data, isLoading, isHasError } = useRequest<ExchangesHistoryDataResponse>(
     `https://rest.coinapi.io/v1/exchangerate/${selectedInputTab}/${selectedOutputTab}/history`,
     {
       headers: { 'X-CoinAPI-Key': tempAPIKey },
@@ -58,9 +38,13 @@ export const useChartsData = () => {
     [],
   );
 
+  console.log('data :>> ', data);
+
   useEffect(() => {
-    setChartsData(data?.data);
+    if (data) {
+      const test = data.data.reduce<ExchangesData>((acc, dayHistory) => {}, {});
+    }
   }, [data]);
 
-  return { chartsData, isLoading, isHasError };
+  return { exchangesData, isLoading, isHasError };
 };
