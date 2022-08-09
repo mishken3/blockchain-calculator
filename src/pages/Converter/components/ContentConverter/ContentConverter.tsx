@@ -53,7 +53,7 @@ export const ContentConverter: FC<ContentConverterProps> = ({ currenciesData }) 
       </div>
 
       <div className={styles.content__chart}>
-        <button onClick={handlerSetIsChartOpen}>Show graphics (WIP)</button>
+        <button onClick={handlerSetIsChartOpen}>Show graphics (MVP)</button>
 
         {isChartOpen && <LineChart />}
       </div>
