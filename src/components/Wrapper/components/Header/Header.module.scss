@@ -1,6 +1,6 @@
 @use '../../../../assets/styles/constants.scss' as *;
-
 @import '../../../../assets/styles/buttons.scss';
+@import '../../../../assets/styles/breakpoints.scss';
 
 .header {
   background: $color__black;
@@ -27,6 +27,10 @@
   align-items: center;
 
   gap: 40px;
+
+  @include for-tablet-portrait-up {
+    gap: 1rem;
+  }
 
   &__item {
     @extend .buttons__button;

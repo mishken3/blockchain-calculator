@@ -1,4 +1,5 @@
 @use '../../assets/styles/constants.scss' as *;
+@import '../../assets/styles/breakpoints.scss';
 
 .page {
   display: flex;
@@ -21,7 +22,16 @@
     flex-direction: column;
     gap: 24px;
 
-    padding: 40px 240px;
+    padding: 40px 100px;
+
+    @include for-desktop-big {
+      justify-content: center;
+      align-items: center;
+    }
+
+    @include for-tablet-portrait-up {
+      padding: 20px;
+    }
   }
 
   & footer {
@@ -38,6 +48,12 @@
 
     & p {
       word-wrap: break-word;
+    }
+
+    @include for-phone-only {
+      padding: 1rem;
+      gap: 1rem;
+      font-size: 0.5rem;
     }
   }
 

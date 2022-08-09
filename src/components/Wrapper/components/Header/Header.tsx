@@ -3,6 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { logo, profile_photo } from '../../../../assets/icons';
+import { useWindowDimensions } from '../../../../hooks';
 import styles from './Header.module.scss';
 
 interface GetClassNamesProps {
@@ -11,6 +12,8 @@ interface GetClassNamesProps {
 type GetClassNames = (props: GetClassNamesProps) => string;
 
 export const Header = () => {
+  const { width: windowWidth } = useWindowDimensions();
+
   const getClassNames: GetClassNames = ({ isActive }) =>
     cn(styles.tabs__item, isActive && styles.tabs__item_selected);
 
@@ -29,7 +32,7 @@ export const Header = () => {
 
       <div className={styles.profile}>
         <img className={styles.profile__photo} src={profile_photo} alt="Profile logo" />
-        <span className={styles.profile__name}>Саша Петров</span>
+        {windowWidth >= 475 && <span className={styles.profile__name}>Саша Петров</span>}
       </div>
     </div>
   );

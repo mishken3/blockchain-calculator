@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
 
 import { Input, ReverseTabsButton, useInput } from '../../../../components';
+import { useWindowDimensions } from '../../../../hooks';
 import { CurrenciesData } from '../../../../types/CurrenciesData.types';
 import { LineChart } from '../LineChart';
 import styles from './ContentConverter.module.scss';
@@ -22,6 +23,8 @@ export const ContentConverter: FC<ContentConverterProps> = ({ currenciesData }) 
     changeInput,
   } = useInput(currenciesData);
 
+  const { width: windowWidth } = useWindowDimensions();
+
   const [isChartOpen, setIsChartOpen] = useState(false);
   const handlerSetIsChartOpen = () => {
     setIsChartOpen((prevState) => !prevState);
@@ -40,7 +43,7 @@ export const ContentConverter: FC<ContentConverterProps> = ({ currenciesData }) 
           textBelowInput={exchangeInputCourse}
         />
 
-        <ReverseTabsButton reverseTabs={reverseTabs} />
+        <ReverseTabsButton reverseTabs={reverseTabs} isHorizontalView={windowWidth >= 1200} />
 
         <Input
           title="Хочу приобрести"
