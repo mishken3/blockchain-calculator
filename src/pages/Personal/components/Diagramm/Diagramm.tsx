@@ -3,7 +3,6 @@ import { Doughnut } from 'react-chartjs-2';
 
 import { Wallet } from '../../../../redux/reducers/wallet/types';
 import { CoinsColors, CurrenciesEnum } from '../../../../types';
-import styles from './Diagramm.module.scss';
 
 interface DiagrammProps {
   walletData2USD: Wallet;
@@ -29,9 +28,5 @@ export const Diagramm: FC<DiagrammProps> = ({ walletData2USD }) => {
     ],
   };
 
-  return (
-    <div className={styles.diagramm}>
-      <Doughnut data={chartData} />
-    </div>
-  );
+  return <Doughnut data={chartData} />;
 };

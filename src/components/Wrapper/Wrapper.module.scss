@@ -22,11 +22,15 @@
     flex-direction: column;
     gap: 24px;
 
-    padding: 40px 100px;
+    padding: 40px 240px;
 
     @include for-desktop-big {
       justify-content: center;
       align-items: center;
+    }
+
+    @include for-desktop {
+      padding: 40px 100px;
     }
 
     @include for-tablet-portrait-up {
