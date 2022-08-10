@@ -1,27 +1,74 @@
 @use '../../assets/styles/constants.scss' as *;
+@import '../../assets/styles/breakpoints.scss';
 
 .page {
-  min-height: 100vh;
-  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
 
-  font-family: 'Montserrat', sans-serif;
-  & p {
-    margin: 0px;
+  & header {
+    flex: 0 0 auto;
   }
 
   &__name {
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 700;
     line-height: 40px;
-
-    color: $color__black;
   }
 
-  &__content {
+  & main {
+    flex: 1 0 auto;
+
     display: flex;
     flex-direction: column;
     gap: 24px;
 
     padding: 40px 240px;
+
+    @include for-desktop-big {
+      justify-content: center;
+      align-items: center;
+    }
+
+    @include for-desktop {
+      padding: 40px 100px;
+    }
+
+    @include for-tablet-portrait-up {
+      padding: 20px;
+    }
+  }
+
+  & footer {
+    flex: 0 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+
+    padding: 12px 40px;
+
+    font-size: 0.8rem;
+
+    & p {
+      word-wrap: break-word;
+    }
+
+    @include for-phone-only {
+      padding: 1rem;
+      gap: 1rem;
+      font-size: 0.5rem;
+    }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: right;
+    gap: 1rem;
+
+    & img {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 }

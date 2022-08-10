@@ -22,6 +22,7 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({ currenciesData }) =>
     handlerSetIsUSDBuyOpen,
 
     walletAmount,
+    walletData2USD,
   } = useContentPersonal(currenciesData);
 
   const CoinItems = Object.values(currenciesData).map((currency) => {
@@ -47,22 +48,28 @@ export const ContentPersonal: FC<ContentPersonalProps> = ({ currenciesData }) =>
       </div>
 
       <div className={styles.content}>
-        <Diagramm walletAmount={walletAmount} />
+        <div className={styles.content__balance}>
+          <div className={styles.content__balance_diagramm}>
+            <Diagramm walletData2USD={walletData2USD} />
+          </div>
 
-        <div className={styles.content__coins}>
-          {CoinItems}
-          <div className={styles.content__buttons}>
-            <button className={styles.content__buttons_button} onClick={handlerSetIsUSDBuyOpen}>
-              <span>Купить</span>
-            </button>
-            <button className={styles.content__buttons_button} onClick={handlerSetExchangeOpen}>
-              <span>Обменять</span>
-            </button>
+          <div className={styles.content__coins}>
+            {CoinItems}
+            <div className={styles.content__buttons}>
+              <button className={styles.content__buttons_button} onClick={handlerSetIsUSDBuyOpen}>
+                <span>Купить</span>
+              </button>
+              <button className={styles.content__buttons_button} onClick={handlerSetExchangeOpen}>
+                <span>Обменять</span>
+              </button>
+            </div>
           </div>
         </div>
 
-        {isExchangeOpen && <InputExchange useInputData={useInputData} />}
-        {isUSDBuyOpen && <InputUSD useInputData={useInputData} />}
+        <div className={styles.content__exchange}>
+          {isExchangeOpen && <InputExchange useInputData={useInputData} />}
+          {isUSDBuyOpen && <InputUSD useInputData={useInputData} />}
+        </div>
       </div>
     </div>
   );

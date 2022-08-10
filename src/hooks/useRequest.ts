@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
  * @param requestParams - headers, data с которыми совершается запрос
  * @param deps - массив зависимостей изходя из которого запрос будет совершаться
  */
-export const useRequest = <T>(endpoint: string, requestParams: object, deps: never[] = []) => {
+export const useRequest = <T>(endpoint: string, requestParams: object, deps: string[] = []) => {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isHasError, setIsHasError] = useState<boolean>(false);

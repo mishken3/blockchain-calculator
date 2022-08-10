@@ -1,17 +1,32 @@
 import React, { FC } from 'react';
+import { Doughnut } from 'react-chartjs-2';
 
-import styles from './Diagramm.module.scss';
+import { Wallet } from '../../../../redux/reducers/wallet/types';
+import { CoinsColors, CurrenciesEnum } from '../../../../types';
 
 interface DiagrammProps {
-  walletAmount: string;
+  walletData2USD: Wallet;
 }
 
-export const Diagramm: FC<DiagrammProps> = ({ walletAmount }) => {
-  return (
-    <div className={styles.diagramm}>
-      <p className={styles.diagramm__balance}>
-        {walletAmount} <span className={styles.diagramm__balance_currency}>USD</span>
-      </p>
-    </div>
-  );
+export const Diagramm: FC<DiagrammProps> = ({ walletData2USD }) => {
+  /* TODO use walletAmount in the center, mb in react-chartjs-2 its impossible */
+
+  const walletCurrencies = Object.keys(walletData2USD) as Array<keyof typeof CurrenciesEnum>;
+
+  const chartData = {
+    labels: walletCurrencies,
+    datasets: [
+      {
+        label: 'Balance amount chart',
+        data: walletCurrencies.map((key) => walletData2USD[key]),
+        backgroundColor: walletCurrencies.map((currency) => CoinsColors[currency]),
+        borderColor: walletCurrencies.map((currency) => CoinsColors[currency]),
+        borderWidth: 1,
+        hoverOffset: 3,
+        cutout: '75%',
+      },
+    ],
+  };
+
+  return <Doughnut data={chartData} />;
 };

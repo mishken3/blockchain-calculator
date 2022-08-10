@@ -1,6 +1,6 @@
 import { useActions, useTypedSelector } from '../../../../hooks';
 import { Input } from '../../../../redux/reducers/input/types';
-import { CurrenciesEnum } from '../../../../types/types';
+import { CurrenciesEnum } from '../../../../types';
 
 export const useInputUSD = (inputData: Input) => {
   const { updateWallet } = useActions();

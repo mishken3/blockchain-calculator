@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { InputDataHook, InputField } from '../../../../components';
-import { CurrenciesEnum } from '../../../../types/types';
+import { CurrenciesEnum } from '../../../../types';
 import { getBeautifyAmount } from '../../Personal.utils';
 import { useInputUSD } from './InputUSD.hook';
 import styles from './InputUSD.module.scss';

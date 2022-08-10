@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { useActions } from '../../../../hooks';
+import { useActions, useTypedSelector } from '../../../../hooks';
 import { Input } from '../../../../redux/reducers/input/types';
-import { CurrenciesEnum } from '../../../../types/types';
-import { useTypedSelector } from './../../../../hooks/useTypedSelector';
+import { CurrenciesEnum } from '../../../../types';
 
 interface InputExhchageHook {
   exchangeAction: (inputData: Input) => void;

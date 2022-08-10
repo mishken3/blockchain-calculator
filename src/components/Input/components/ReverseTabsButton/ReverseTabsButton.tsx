@@ -2,6 +2,7 @@ import cn from 'classnames';
 import React, { FC } from 'react';
 
 import { arrows } from '../../../../assets/icons';
+import { useWindowDimensions } from '../../../../hooks';
 import styles from './ReverseTabsButton.module.scss';
 
 interface ReverseTabsButtonProps {
@@ -12,12 +13,27 @@ interface ReverseTabsButtonProps {
 export const ReverseTabsButton: FC<ReverseTabsButtonProps> = ({
   reverseTabs,
   isHorizontalView = true,
-}) => (
-  <div className={styles.reverse}>
-    <div className={cn(isHorizontalView ? styles.reverse__horizontal : styles.reverse__vertical)}>
-      <button type="button" className={styles.reverse__button} onClick={reverseTabs}>
-        <img src={arrows} alt="Reverse selected tabs coins" />
-      </button>
+}) => {
+  const { width: windowWidth } = useWindowDimensions();
+
+  return (
+    <div className={styles.reverse}>
+      {windowWidth >= 768 ? (
+        <div
+          className={cn(isHorizontalView ? styles.reverse__horizontal : styles.reverse__vertical)}>
+          <button type="button" className={styles.reverse__button} onClick={reverseTabs}>
+            <img src={arrows} alt="Reverse selected tabs coins" />
+          </button>
+        </div>
+      ) : (
+        <button type="button" className={styles.reverse__button} onClick={reverseTabs}>
+          {windowWidth >= 768 ? (
+            <img src={arrows} alt="Reverse selected tabs coins" />
+          ) : (
+            <p>Swap Coins</p>
+          )}
+        </button>
+      )}
     </div>
-  </div>
-);
+  );
+};

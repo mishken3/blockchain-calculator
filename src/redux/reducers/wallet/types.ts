@@ -1,4 +1,4 @@
-import { CurrenciesEnum } from '../../../types/types';
+import { CurrenciesEnum } from '../../../types';
 import { WALLET_ACTION_TYPES } from './action-types';
 
 /** state **/
