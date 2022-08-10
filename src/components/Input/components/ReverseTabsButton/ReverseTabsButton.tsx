@@ -22,11 +22,7 @@ export const ReverseTabsButton: FC<ReverseTabsButtonProps> = ({
         <div
           className={cn(isHorizontalView ? styles.reverse__horizontal : styles.reverse__vertical)}>
           <button type="button" className={styles.reverse__button} onClick={reverseTabs}>
-            {windowWidth >= 768 ? (
-              <img src={arrows} alt="Reverse selected tabs coins" />
-            ) : (
-              <p>Обменять</p>
-            )}
+            <img src={arrows} alt="Reverse selected tabs coins" />
           </button>
         </div>
       ) : (
@@ -34,7 +30,7 @@ export const ReverseTabsButton: FC<ReverseTabsButtonProps> = ({
           {windowWidth >= 768 ? (
             <img src={arrows} alt="Reverse selected tabs coins" />
           ) : (
-            <p>Обменять</p>
+            <p>Swap Coins</p>
           )}
         </button>
       )}
