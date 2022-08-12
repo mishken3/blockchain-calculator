@@ -3,13 +3,14 @@ import 'chart.js/auto';
 import React, { FC } from 'react';
 import { Line } from 'react-chartjs-2';
 
-import { useExchangesHistoryData, useTypedSelector } from '../../../../hooks';
+import { useExchangesHistoryData, useTypedSelector, useWindowDimensions } from '../../../../hooks';
 import { CoinsColors, CurrenciesEnum, ExchangesHistoryDataHook } from '../../../../types';
 import styles from './LineChart.module.scss';
 
 export const LineChart: FC = () => {
   const currentSelectedInputCurrencyTab = useTypedSelector((store) => store.input.inputTab);
   const currentSelectedOutputCurrencyTab = useTypedSelector((store) => store.input.outputTab);
+  const { width: windowWidth } = useWindowDimensions();
 
   const { exchangesData, isLoading, isHasError }: ExchangesHistoryDataHook =
     useExchangesHistoryData(currentSelectedInputCurrencyTab, currentSelectedOutputCurrencyTab);
@@ -21,7 +22,7 @@ export const LineChart: FC = () => {
     return <h1>Ошибка загрузки валют: перезагрузите страницу.</h1>;
   }
 
-  const datesForLabels = exchangesData.data.map((dayData) => {
+  const datesForMonthLabels = exchangesData.data.map((dayData) => {
     const months = [
       'Январь',
       'Февраль',
@@ -43,15 +44,17 @@ export const LineChart: FC = () => {
 
     return `${day} ${month}`;
   });
+  const datesForWeekLabels = [...datesForMonthLabels].splice(datesForMonthLabels.length - 10);
 
   const monthHistoryDayPrice = exchangesData.data.map((dayData) => dayData.rate_open);
+  const weekHistoryDayPrice = [...monthHistoryDayPrice].splice(monthHistoryDayPrice.length - 10);
 
   const data = {
-    labels: datesForLabels,
+    labels: windowWidth >= 768 ? datesForMonthLabels : datesForWeekLabels,
     datasets: [
       {
         label: CurrenciesEnum[currentSelectedInputCurrencyTab],
-        data: monthHistoryDayPrice,
+        data: windowWidth >= 768 ? monthHistoryDayPrice : weekHistoryDayPrice,
         borderColor: CoinsColors[currentSelectedInputCurrencyTab],
         backgroundColor: CoinsColors[currentSelectedInputCurrencyTab],
       },
