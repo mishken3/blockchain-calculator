@@ -4,7 +4,7 @@ import { Wallet, WalletAction } from './types';
 
 const initialState: Wallet = {
   [CurrenciesEnum.BTC]: 2,
-  [CurrenciesEnum.ETH]: 50,
+  [CurrenciesEnum.DOGE]: 50,
   [CurrenciesEnum.USD]: 200_000,
 };
 

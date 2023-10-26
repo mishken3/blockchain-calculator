@@ -17,7 +17,7 @@ export const CurrencyTabs: FC<CurrencyTabsProps> = ({
   handleOnClick,
   isHorizontalView = true,
 }) => {
-  const currencies = [CurrenciesEnum.USD, CurrenciesEnum.ETH, CurrenciesEnum.BTC];
+  const currencies = [CurrenciesEnum.USD, CurrenciesEnum.DOGE, CurrenciesEnum.BTC];
 
   return (
     <div className={cn(styles.currencies, !isHorizontalView && styles.vertical)}>
