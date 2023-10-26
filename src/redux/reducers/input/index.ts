@@ -4,7 +4,7 @@ import { ConverterAction, Input } from './types';
 
 const initialState: Input = {
   inputTab: CurrenciesEnum.BTC,
-  outputTab: CurrenciesEnum.ETH,
+  outputTab: CurrenciesEnum.DOGE,
 
   input: 1,
   inputExchangeCourse: 16.307259498296023,

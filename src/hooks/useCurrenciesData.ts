@@ -6,7 +6,7 @@ import { useRequest } from './useRequest';
 export const useCurrenciesData = () => {
   const [currenciesData, setCurrenciesData] = useState<CurrenciesData | null>(null);
   const { data, isLoading, isHasError } = useRequest<CurrenciesDataResponse>(
-    'https://api.minerstat.com/v2/coins?list=BTC,ETH',
+    'https://api.minerstat.com/v2/coins?list=BTC,DOGE',
     {},
     [],
   );

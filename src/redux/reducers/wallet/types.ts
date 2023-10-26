@@ -4,7 +4,7 @@ import { WALLET_ACTION_TYPES } from './action-types';
 /** state **/
 export interface Wallet {
   [CurrenciesEnum.BTC]: number;
-  [CurrenciesEnum.ETH]: number;
+  [CurrenciesEnum.DOGE]: number;
   [CurrenciesEnum.USD]: number;
 }
 
